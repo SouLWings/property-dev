@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "property"
+    },
+    "property": {
+      "applicationId": "yICswxr5amAnGVVPzIWwApo62ikbYJ95ODrc9rBL"
+    }
+  }
+}

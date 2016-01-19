@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="img/newfavicon.ico">
+
+<title>CarWash</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+
+
+<script>
+
+</script>
+<script>
+
+function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 12,
+		center: {lat: 3.125, lng: 101.672 }
+	});
+
+	map.addListener('click', function(e) {
+		$("input[name='geolocation']").val(e.latLng);
+		codeLatLng(e.latLng.lat(), e.latLng.lng())
+	});
+  
+    var geocoder = new google.maps.Geocoder();
+	// Create the search box and link it to the UI element.
+	var input = document.getElementById('pac-input');
+	var searchBox = new google.maps.places.SearchBox(input);
+	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+	// Bias the SearchBox results towards current map's viewport.
+	map.addListener('bounds_changed', function() {
+		searchBox.setBounds(map.getBounds());
+	});
+
+	var markers = [];
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+		codeLatLng(place.geometry.location.lat(), place.geometry.location.lng())
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+	
+	function codeLatLng(lat, lng) {
+
+		var latlng = new google.maps.LatLng(lat, lng);
+		geocoder.geocode({'latLng': latlng}, function(results, status) {
+		  if (status == google.maps.GeocoderStatus.OK) {
+		  console.log(results)
+			if (results[1]) {
+				//formatted address
+				var location = results[1];
+				console.log(location.formatted_address);
+				//find country name
+				var stop = false;
+				city = {long_name:''};
+				for (var i=0; i<location.address_components.length; i++) {
+					if(stop)
+						break;
+					for (var b=0;b<location.address_components[i].types.length;b++) {
+						console.log("checking " + location.address_components[i].short_name);
+						if (//location.address_components[i].types[b] == "locality" 
+							//|| location.address_components[i].types[b] == "sublocality"
+							//|| location.address_components[i].types[b] == "political"
+							location.address_components[i].types[b] == "sublocality_level_1"
+						) {
+								//this is the object you are looking for
+							city= location.address_components[i];
+							stop = true;
+							break;
+						}
+					}
+				}
+				district = {long_name:''};
+				stop = false;
+				for (var i=0; i<location.address_components.length; i++) {
+					if(stop)
+						break;
+					for (var b=0;b<location.address_components[i].types.length;b++) {
+						console.log("checking " + location.address_components[i].short_name);
+						if (location.address_components[i].types[b] == "locality" 
+							//|| location.address_components[i].types[b] == "sublocality"
+							//|| location.address_components[i].types[b] == "political"
+							//|| location.address_components[i].types[b] == "sublocality_level_1"
+						) {
+								//this is the object you are looking for
+							district= location.address_components[i];
+							stop = true;
+							break;
+						}
+					}
+				}
+				
+				if(city.long_name != "")
+					city.long_name += ', ';
+				$("input[name='area']").val(city.long_name +district.long_name);
+				$("input[name='hidden-address']").val(results[0].formatted_address);
+				$("input[name='public-address']").val(results[1].formatted_address);
+
+			} else {
+			  alert("No results found");
+			}
+		  } else {
+			alert("Geocoder failed due to: " + status);
+		  }
+		});
+	}
+}
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARqI7YBtq1-hFm12qxqWwC8xAjrJ2bJdQ&libraries=places" type="text/javascript"></script>
+<style>
+.card-hover{
+	transition: all 300ms;
+	border-radius: 20px;
+	width:300px;
+	height:300px;
+	display:inline-block;
+	font-size:4em;
+}
+.card-hover:hover{
+	background: #aaa;
+	box-shadow: 0 0 15px #aaa;
+}
+.nav-link{
+	cursor:pointer;
+}
+#page-loader{
+	font-size:6em;
+	position:absolute;
+	height:100%;
+	width:100%;
+	background:#fff;
+	z-index:10;
+}
+.gear-holder{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+</style>
+</head>
+
+<body>
+	<div id="page-loader" class='text-center'>
+		<div class="gear-holder">
+			<i class="fa fa-gear fa-spin"></i>
+		</div>
+	</div>
+	<div class="container">
+	
+		<div id="page-landing" style="margin:auto;width:612px" class="page-section">
+			<div>
+				<h1 class="text-center">Car Wash</h1>
+			</div>
+			<div class='card-hover text-center nav-link' data-link="requester">
+				<i class="fa fa-user"></i><br/>For Requester
+			</div>
+			<div class='card-hover text-center nav-link' data-link="provider">
+				<i class="fa fa-users"></i><br/>For Provider
+			</div>
+		</div>
+		
+		
+		
+		<div id="page-requester" class="page-section">
+			<div class="nav-link" data-link="landing">
+				<i class="fa fa-arrow-left"></i>
+			</div>
+			<div>
+				<h1 class="text-center">Create Car Wash Request</h1>
+			</div>
+			<form id='request-form' class="form-horizontal col-sm-9">
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Title</label>
+					<div class="col-sm-10">
+						<input name="title" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Name</label>
+					<div class="col-sm-10">
+						<input name="name" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<input name="email" type="email" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Phone</label>
+					<div class="col-sm-10">
+						<input name="phone" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Choose Location</label>
+					<div class="col-sm-10">
+						<div id="map" style="height:400px"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Area</label>
+					<div class="col-sm-10">
+						<input name="area" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Full Address</label>
+					<div class="col-sm-10">
+						<input name="hidden-address" type="text" class="form-control round-input" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Short Address</label>
+					<div class="col-sm-10">
+						<input name="public-address" type="text" class="form-control round-input" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Geolocation</label>
+					<div class="col-sm-10">
+						<input name="geolocation" type="text" class="form-control round-input" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Remarks</label>
+					<div class="col-sm-10">
+						<input name="remarks" type="text" class="form-control round-input">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label"></label>
+					<div class="col-sm-7">
+						<button class="btn btn-primary">Submit Request</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		
+		
+		<div id="page-provider" style="margin:auto;width:612px" class="page-section">
+			<div class="nav-link" data-link="landing">
+				<i class="fa fa-arrow-left"></i>
+			</div>
+			<div>
+				<h1 class="text-center">Car Wash Provider</h1>
+			</div>
+			<div class='card-hover text-center nav-link' data-link="register">
+				<br/><i class="fa fa-user"></i><br/>Register
+			</div>
+			<div class='card-hover text-center nav-link' data-link="signin">
+				<br/><i class="fa fa-users"></i><br/>Sign In
+			</div>
+		</div>
+		
+		
+		
+		<div id="page-signin" class="page-section">
+			<div class="nav-link" data-link="provider">
+				<i class="fa fa-arrow-left"></i>
+			</div>
+			<div>
+				<h1 class="text-center">Car Wash Provider Sign In</h1>
+			</div>
+			<form id='signin-form' class="form-horizontal col-sm-9">
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<input name="email" type="email" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input name="password" type="password" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label"></label>
+					<div class="col-sm-7">
+						<input type='submit' class="btn btn-primary" value="Sign In"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		
+		
+		<div id="page-register" class="page-section">
+			<div class="nav-link" data-link="provider">
+				<i class="fa fa-arrow-left"></i>
+			</div>
+			<div>
+				<h1 class="text-center">Car Wash Provider Registration</h1>
+			</div>
+			<form id='register-form' class="form-horizontal col-sm-9">
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<input name="email" type="email" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input name="password" type="password" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Full Name</label>
+					<div class="col-sm-10">
+						<input name="name" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">IC</label>
+					<div class="col-sm-10">
+						<input name="ic" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Phone</label>
+					<div class="col-sm-10">
+						<input name="phone" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Area of coverage</label>
+					<div class="col-sm-10">
+						<input name="area" type="text" class="form-control" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">Duno what else</label>
+					<div class="col-sm-10">
+						<input name="bla" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label"></label>
+					<div class="col-sm-7">
+						<input type='submit' class="btn btn-primary" value="Sign up"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		
+		
+		<div id="page-provider-dashboard" class="page-section">
+			<a href="" class="pull-right nav-link" data-link="landing" onclick="logout()">Logout</a>
+			<div id="job-list-holder">
+				
+			</div>
+		</div>
+	</div>
+	
+	<!-- Template holder -->
+	<div id="templates_holder" class='hidden'>
+
+		<div class="col-sm-4 col-md-4 job-card job-card-template" data-prefix="">
+			<section class="panel panel-primary">
+				<header class="panel-heading"> 
+					<span class='title searchable'>Dr </span> 
+					<span class='name searchable'>Khamis Bin Jumaat</span>
+				</header>
+				<div class="panel-body">
+					<div class=''>
+						<div class='phone searchable'>
+							01115134217
+						</div>
+						<div class='email searchable'>
+							admin@etuition.com.my
+						</div>
+						<div class='hiddenAddress searchable'>
+							123, JLN Mati, Pulau Pinang
+						</div>
+						<div class='remarks searchable'>
+							This 1 owez ffk
+						</div>
+					</div>
+					<button class='btn btn-primary'>Apply</button>
+				</div>
+			</section>
+		</div>
+		
+		
+		
+	</div>
+	
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/parse/parse-1.6.12.min.js"></script>
+<script type="text/javascript" src="js/parse/parse-core.js"></script>
+<script type="text/javascript" src="js/parse/app.js"></script>
+</body>
+</html>
