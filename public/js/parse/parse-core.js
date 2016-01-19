@@ -33,6 +33,25 @@ function loadData(entity, callback){
 	});
 }
 
+function loadDataToTemplate(object, container, template){
+	
+	loadData(object, function(jobList){
+		if(jobList.message !== undefined){
+			alert(jobList.message)
+			return;
+		}
+		var container = $(container);
+		container.html("");
+		if(jobList.length > 0){
+			for (var i = 0; i < jobList.length; i++) {
+				container.append(generateCard(template, jobList[i]));
+			}
+		} else {
+			container.html("No data.");
+		}
+	}); 
+}
+
 function login(email, password, callback){
     Parse.User.logIn(email, password, {
         success: function(user) {

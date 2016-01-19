@@ -30,20 +30,18 @@ $(document).ready(function(){
 				}
 			});
 		}
-			
+		
 		return false;
-	});
+	});	
 	
-	/* loadData("Job", function(jobList){
-		G.jobs = [];
-		G.jobsJSON = [];
+	/*loadDataToTemplate("Job", '#job-list-holder', ".job-card-template");
+	
+	loadData("Job", function(jobList){
 		var container = $('#job-list-holder');
 		container.html("");
 		if(jobList.length > 0){
 			for (var i = 0; i < jobList.length; i++) {
 				container.append(generateCard(".job-card-template", jobList[i]));
-				G.jobs.push(jobList[i]);
-				G.jobsJSON.push(jobList[i].toJSON);
 			}
 		} else {
 			container.html("No data.");
