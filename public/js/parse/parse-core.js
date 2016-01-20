@@ -6,10 +6,19 @@ function generateCard(templateName, object){
 	template.removeClass(templateName.replace(".",""));
 	var prefix = "." + template.data("prefix");
 	template.data("id", object.id);
+	template.data("object", object);
 	
-	object = object.toJSON();		
+	object = object.toJSON();
 	$.each(object, function(key, val){
-		template.find(prefix+key).text(val);
+		if(val.url !== undefined){
+			template.find(prefix+key).attr("src",val.url);
+		} else if(key == "createdAt"){
+			var date = new Date(val);
+			template.find(prefix+key).text(date.getDate() +"-"+(date.getMonth()+1) +"-"+ date.getFullYear());
+		} else {
+			template.find(prefix+key).text(val);
+		}
+		
 	});
 	
 	return template;
@@ -69,6 +78,7 @@ function login(email, password, callback){
 function logout(){
     Parse.User.logOut();
     console.log("logged out");
+	location = '/';
 }
 
 

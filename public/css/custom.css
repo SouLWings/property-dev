@@ -49,3 +49,10 @@
 .widget_links li{
 	padding: 4px;
 }
+
+.form-control{
+	height:auto;
+	border-radius:0;
+	border: 2px solid #ccc;
+	padding: 8px 14px;
+}

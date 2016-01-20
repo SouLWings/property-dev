@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Excel RealEstate">
+    <meta name="author" content="Your Best Real Estate Consultant">
+	<meta property="og:site_name" content="Excel RealEstate">
+	<meta property="og:title" content="Your Best Real Estate Consultant">
+
+    <title>Excel RealEstate</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="css/construction.css" type="text/css" />   <!-- YT -->
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />   <!-- YT -->
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />   <!-- YT -->
+    <link href="css/clean-blog.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+
+
+	<script>
+
+	</script>
+	<script>
+
+	function initMap() {
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 12,
+			center: {lat: 3.125, lng: 101.672 }
+		});
+
+		map.addListener('click', function(e) {
+			$("input[name='geolocation']").val(e.latLng);
+			codeLatLng(e.latLng.lat(), e.latLng.lng())
+		});
+	  
+		var geocoder = new google.maps.Geocoder();
+		// Create the search box and link it to the UI element.
+		var input = document.getElementById('pac-input');
+		var searchBox = new google.maps.places.SearchBox(input);
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+		// Bias the SearchBox results towards current map's viewport.
+		map.addListener('bounds_changed', function() {
+			searchBox.setBounds(map.getBounds());
+		});
+
+		var markers = [];
+	  // [START region_getplaces]
+	  // Listen for the event fired when the user selects a prediction and retrieve
+	  // more details for that place.
+	  searchBox.addListener('places_changed', function() {
+		var places = searchBox.getPlaces();
+
+		if (places.length == 0) {
+		  return;
+		}
+
+		// Clear out the old markers.
+		markers.forEach(function(marker) {
+		  marker.setMap(null);
+		});
+		markers = [];
+
+		// For each place, get the icon, name and location.
+		var bounds = new google.maps.LatLngBounds();
+		places.forEach(function(place) {
+			codeLatLng(place.geometry.location.lat(), place.geometry.location.lng())
+		  var icon = {
+			url: place.icon,
+			size: new google.maps.Size(71, 71),
+			origin: new google.maps.Point(0, 0),
+			anchor: new google.maps.Point(17, 34),
+			scaledSize: new google.maps.Size(25, 25)
+		  };
+
+		  // Create a marker for each place.
+		  markers.push(new google.maps.Marker({
+			map: map,
+			icon: icon,
+			title: place.name,
+			position: place.geometry.location
+		  }));
+
+		  if (place.geometry.viewport) {
+			// Only geocodes have viewport.
+			bounds.union(place.geometry.viewport);
+		  } else {
+			bounds.extend(place.geometry.location);
+		  }
+		});
+		map.fitBounds(bounds);
+	  });
+		
+		function codeLatLng(lat, lng) {
+
+			var latlng = new google.maps.LatLng(lat, lng);
+			geocoder.geocode({'latLng': latlng}, function(results, status) {
+			  if (status == google.maps.GeocoderStatus.OK) {
+			  console.log(results)
+				if (results[1]) {
+					//formatted address
+					var location = results[1];
+					console.log(location.formatted_address);
+					//find country name
+					var stop = false;
+					city = {long_name:''};
+					for (var i=0; i<location.address_components.length; i++) {
+						if(stop)
+							break;
+						for (var b=0;b<location.address_components[i].types.length;b++) {
+							console.log("checking " + location.address_components[i].short_name);
+							if (//location.address_components[i].types[b] == "locality" 
+								//|| location.address_components[i].types[b] == "sublocality"
+								//|| location.address_components[i].types[b] == "political"
+								location.address_components[i].types[b] == "sublocality_level_1"
+							) {
+									//this is the object you are looking for
+								city= location.address_components[i];
+								stop = true;
+								break;
+							}
+						}
+					}
+					district = {long_name:''};
+					stop = false;
+					for (var i=0; i<location.address_components.length; i++) {
+						if(stop)
+							break;
+						for (var b=0;b<location.address_components[i].types.length;b++) {
+							console.log("checking " + location.address_components[i].short_name);
+							if (location.address_components[i].types[b] == "locality" 
+								//|| location.address_components[i].types[b] == "sublocality"
+								//|| location.address_components[i].types[b] == "political"
+								//|| location.address_components[i].types[b] == "sublocality_level_1"
+							) {
+									//this is the object you are looking for
+								district= location.address_components[i];
+								stop = true;
+								break;
+							}
+						}
+					}
+					
+					if(city.long_name != "")
+						city.long_name += ', ';
+					$("input[name='area']").val(city.long_name +district.long_name);
+					$("input[name='hidden-address']").val(results[0].formatted_address);
+					$("input[name='public-address']").val(results[1].formatted_address);
+
+				} else {
+				  alert("No results found");
+				}
+			  } else {
+				alert("Geocoder failed due to: " + status);
+			  }
+			});
+		}
+	}
+
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARqI7YBtq1-hFm12qxqWwC8xAjrJ2bJdQ&libraries=places" type="text/javascript"></script>
+	<style>
+	.card-hover{
+		transition: all 300ms;
+		border-radius: 20px;
+		width:300px;
+		height:300px;
+		display:inline-block;
+		font-size:4em;
+	}
+	.card-hover:hover{
+		background: #aaa;
+		box-shadow: 0 0 15px #aaa;
+	}
+	.nav-link{
+		cursor:pointer;
+	}
+	#page-loader{
+		font-size:6em;
+		position:absolute;
+		width:100%;
+		height:calc(100% - 60px);
+		height:-moz-calc(100% - 60px);
+		height:-webkit-calc(100% - 60px);
+		background:#fff;
+		z-index:10;
+	}
+	.gear-holder{
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	#pac-input {
+	  background-color: #fff;
+	  font-family: Roboto;
+	  font-size: 15px;
+	  font-weight: 300;
+	  margin-left: 12px;
+	  padding: 0 11px 0 13px;
+	  text-overflow: ellipsis;
+	  width: 300px;
+	}
+
+	#pac-input:focus {
+	  border-color: #4d90fe;
+	}.controls {
+	  margin-top: 10px;
+	  border: 1px solid transparent;
+	  border-radius: 2px 0 0 2px;
+	  box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  height: 32px;
+	  outline: none;
+	  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	}
+	</style>
+	
+	
+</head>
+
+<body style='padding-top:60px'>
+	<div id="page-loader" class='text-center'>
+		<div class="gear-holder">
+			<i class="fa fa-gear fa-spin"></i>
+		</div>
+	</div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top" style='background:#333'>
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Excel RealEstate</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class='nav-link' data-link='new-post'>New Property</a>
+                    </li>
+                    <!--<li>
+                        <a href="index.html">Testimonials</a>
+                    </li> -->
+                    <li class='adminOnly'>
+                        <a href="#" class='nav-link' data-link='my-property'>Property Listing</a>
+                    </li>
+                    <li class='adminOnly'>
+                        <a href="#" class='nav-link' data-link='my-account'>My Account</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick='logout();'>Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+	<div class="page-section" id='page-new-post'>
+		<div class='jumbotron'>
+			<div class='container'>
+				<h2>NEW PROPERTY LISTING FORM</h2>
+			</div>
+		</div>
+		<div class='container'>
+			<div class='row'>
+				<div class="col-md-6">
+					<form role="form" id="new-post-form">
+					  <div class="box-body">
+						<div class="form-group">
+						  <label for="exampleInputEmail1">SUBJECT</label>
+						  <input type="text" class="form-control" id="inputSubject" required>
+						</div>
+						<div class="form-group">
+						  <label for="exampleInputEmail1">Location</label>
+						  <input type="text" class="form-control" id="inputLocation" required>
+						</div>
+						<div class="form-group">
+						  <label for="inputName">SALE / RENT</label>
+						  <select class="form-control" id="inputSaleRent">
+							<option value="">-- Select One --</option>
+							<option>For Sale</option>
+							<option>For Rent</option>
+						  </select>
+						</div>
+						<div class="form-group">
+						  <label for="inputName">SELECT PROPERTY TYPE</label>
+						  <select class="form-control" id="inputType">
+							<option value="">-- Select One --</option>
+							<option value="Apartments">Apartments</option>
+							<option value="Condominiums">Condominiums</option>
+							<option value="Bungalows">Bungalows</option>
+							<option value="Semi-D Houses">Semi-D Houses</option>
+							<option value="Terrace">Terrace</option>
+							<option value="Town Houses">Town Houses</option>
+							<option value="Serviced Residences">Serviced Residences</option>
+							<option value="Penthouses">Penthouses</option>
+							<option value="Office">Office</option>
+						  </select>
+						</div>
+						<div class="form-group">
+						  <label for="inputCoverImage">PROPERTY IMAGES (Cover)</label>
+						  <input type="file" class="form-control" id="inputCoverImage" required>
+						</div>
+						<div class="form-group">
+						  <label for="inputOtherImage">PROPERTY IMAGES (Details)</label>
+						  <input type="file" class="form-control" id="inputOtherImage">
+						</div>
+						<div class="form-group">
+						  <label for="inputName">AGENT NAME</label>
+						  <input type="text" class="form-control" id="inputName" required>
+						</div>
+						<div class="form-group">
+						  <label for="inputPhone">AGENT PHONE</label>
+						  <input type="text" class="form-control" id="inputPhone" required>
+						</div>
+						<div class="form-group">
+						  <label for="inputEMail">AGENT EMAIL</label>
+						  <input type="text" class="form-control" id="inputEmail" required>
+						</div>
+						<div class="form-group">
+						  <label for="inputShortDesc">SHORT DESCRIPTION</label>
+						  <textarea class="form-control" id="inputShortDesc" required></textarea>
+						</div>
+						<div class="form-group">
+						  <label for="inputLongDesc">LONG DESCRIPTION</label>
+						  <textarea class="form-control" id="inputLongDesc" rows='10' required></textarea>
+						</div>
+						<div class="adminOnly hidden">
+							<div class="checkbox">
+							  <label>
+								<input type="checkbox" id="inputFeatured"> Featured
+							  </label>
+							</div>
+							<div class="checkbox">
+							  <label>
+								<input type="checkbox" id="inputSpecial1"> Property of the month
+							  </label>
+							</div>
+						</div>
+					  </div>
+					  <!-- /.box-body -->
+
+					  <div class="box-footer">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					  </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container page-section" id='page-my-property'>
+		<div class='row'>
+			<div class="col-md-10">
+				my property
+				<div id="post-list-holder"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container page-section" id='page-my-account'>
+		<div class='row'>
+			<div class="col-md-10">
+				my account
+			</div>
+		</div>
+	</div>
+	
+	<div class='hidden'>
+		<div class='col-md-3 col-sm-4 col-sx-6 post-card post-card-template' data-prefix='p'>
+		
+			<div class='' style="border:1px solid black">
+				<div class=''>
+					<img class='pcoverImg' />
+				</div>
+				<div class='psubject'></div>
+				<div class='pcreatedAt'></div>
+				<div class='plocation'></div>
+				<a class='btn btn-default pfeatured btn-toggle-able'>Featured</a>
+				<a class='btn btn-default pspecial1 btn-toggle-able'>Property of the Month</a>
+			</div>
+		</div>
+	</div>
+	
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+	<script type="text/javascript" src="js/parse/parse-1.6.12.min.js"></script>
+	<script type="text/javascript" src="js/parse/parse-core.js"></script>
+	<script type="text/javascript" src="js/parse/app.js"></script>
+	<script type="text/javascript" src="js/parse/agent.js"></script>
+</body>
+
+</html>
