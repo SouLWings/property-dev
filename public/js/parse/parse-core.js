@@ -24,15 +24,17 @@ function generateCard(templateName, object){
 	return template;
 }
 
-function loadData(entity, callback){
-	
+function getQuery(entity){
 	var Entity = Parse.Object.extend(entity);
     var query = new Parse.Query(Entity);
     query.descending("createdAt");
-        
+	return query;
+}
+
+function loadData(query, callback){        
     query.find({
 		success: function(results) {
-			console.log("Successfully retrieved " + results.length + " "+entity+"s.");
+			console.log("Successfully retrieved " + results.length + " "+query.className+"s.");
 			callback(results);
 		},
 		error: function(error) {
@@ -42,18 +44,21 @@ function loadData(entity, callback){
 	});
 }
 
-function loadDataToTemplate(object, container, template){
+function loadDataToTemplate(query, holder, template){
+	console.log("loadDataToTemplate for " +query.className);
 	
-	loadData(object, function(jobList){
-		if(jobList.message !== undefined){
-			alert(jobList.message)
+	loadData(query, function(objectList){
+		if(objectList.message !== undefined){
+			alert(objectList.message)
 			return;
 		}
-		var container = $(container);
+		
+		var container = $(holder);
+		console.log(container);
 		container.html("");
-		if(jobList.length > 0){
-			for (var i = 0; i < jobList.length; i++) {
-				container.append(generateCard(template, jobList[i]));
+		if(objectList.length > 0){
+			for (var i = 0; i < objectList.length; i++) {
+				container.append(generateCard(template, objectList[i]));
 			}
 		} else {
 			container.html("No data.");

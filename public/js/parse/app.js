@@ -23,7 +23,8 @@ $(document).ready(function(){
 		} else if ($('#form-action').val() == 'signin'){
 			login($(this).find("input[name='email']").val(), $(this).find("input[name='password']").val(), {
 				success:function(){
-					alert("sign in successful");
+					location = 'agent.html';
+					//alert("sign in successful");
 				}, 
 				error:function(error){
 					alert(error.message);
@@ -34,8 +35,9 @@ $(document).ready(function(){
 		return false;
 	});	
 	
-	/*loadDataToTemplate("Job", '#job-list-holder', ".job-card-template");
+
 	
+	/*
 	loadData("Job", function(jobList){
 		var container = $('#job-list-holder');
 		container.html("");
@@ -48,3 +50,20 @@ $(document).ready(function(){
 		}
 	}); */
 });
+
+function initHomepage(){
+	var featuredPropertyQuery = getQuery("Post");
+	featuredPropertyQuery.equalTo("featured", true);
+	featuredPropertyQuery.equalTo("status", "Approved");
+	loadDataToTemplate(featuredPropertyQuery, '#featured-property-card-holder', ".v-property-card-template");
+	
+	var special1PropertyQuery = getQuery("Post");
+	special1PropertyQuery.equalTo("special1", true);
+	special1PropertyQuery.equalTo("status", "Approved");
+	loadDataToTemplate(special1PropertyQuery, '#special1-property-card-holder', ".v-property-card-template");
+	
+	var latestPropertyQuery = getQuery("Post");
+	latestPropertyQuery.equalTo("status", "Approved");
+	latestPropertyQuery.limit(3);
+	loadDataToTemplate(latestPropertyQuery, '#latest-property-card-holder', ".h-property-card-template");
+}

@@ -27,6 +27,12 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+	<script type="text/javascript" src="js/parse/parse-1.6.12.min.js"></script>
+	<script>
+		if(Parse.User.current() != null)
+			location = "agent.html";
+	</script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -78,7 +84,7 @@
 			                        <div class="form-group">
 			                        <button type="submit" class="btn" onclick="$('#form-action').val('signin')">Sign in!</button>
 			                        </div>
-			                        <button type="submit" class="btn" onclick="$('#form-action').val('register')">Register!</button>
+			                        <!--button type="submit" class="btn" onclick="$('#form-action').val('register')">Register!</button-->
 			                    </form>
 		                    </div>
                         </div>
@@ -112,8 +118,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
-
-	<script type="text/javascript" src="js/parse/parse-1.6.12.min.js"></script>
 	<script type="text/javascript" src="js/parse/parse-core.js"></script>
 	<script type="text/javascript" src="js/parse/app.js"></script>
 </body>

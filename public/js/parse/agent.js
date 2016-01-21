@@ -1,5 +1,8 @@
 var pageloader = $("#page-loader");
 var mapLoaded = false;
+var coverImgFile = null;
+var otherImgFiles = [];
+var uploading = 0;
 
 $(document).ready(function(){
 	
@@ -30,65 +33,93 @@ $(document).ready(function(){
 	$('#new-post-form').submit(function(){
 		var form = $(this);
 		
+		form.find("button").data("html", form.find("button").html());
+		form.find("button").html();
 		//some code to freeze the UI or show some loading
 		
 		var coverImg = $("#inputCoverImage")[0];
-		var coverImgFile = null;
 		if (coverImg.files.length > 0) {
+			uploading++;
 			var file = coverImg.files[0];
 			var name = coverImg.files[0].name;
 	   
 			coverImgFile = new Parse.File(name, file);
+			coverImgFile.save().then(function() {
+				uploading--;
+					console.log(coverImgFile);
+					console.log("uploading: " + uploading);
+				if(uploading == 0){
+					submitNewPost();
+				}
+			}, function(error) {
+			  alert("Error uploading file "+name);
+			});
 		}
 		
 		var otherImg = $("#inputOtherImage")[0];
-		var otherImgFiles = [];
 		if (otherImg.files.length > 0) {
+			otherImgFiles = [];
 			for(var i = 0; i < otherImg.files.length; i++){
+				uploading++;
 				var file = otherImg.files[i];
 				var name = otherImg.files[i].name;
 	   
-				otherImgFiles.push(new Parse.File(name, file));
+				var aImgFile = new Parse.File(name, file);
+				aImgFile.save().then(function() {
+					otherImgFiles.push(aImgFile);
+					uploading--;
+					console.log(otherImgFiles);
+					console.log("uploading: " + uploading);
+					if(uploading == 0){
+						submitNewPost();
+					}
+				}, function(error) {
+				  alert("Error uploading file "+name);
+				});
 			}
 		}
 		
-		var post = new Post();
-		post.save({
-			subject: $(this).find("#inputSubject").val(),
-			location: $(this).find("#inputLocation").val(),
-			saleRent: $(this).find("#inputSaleRent").val(),
-			type: $(this).find("#inputType").val(),
-			name: $(this).find("#inputName").val(),
-			phone: $(this).find("#inputPhone").val(),
-			email: $(this).find("#inputEmail").val(),
-			shortDesc: $(this).find("#inputShortDesc").val(),
-			longDesc: $(this).find("#inputLongDesc").val(),
-			featured: false,
-			special1: false,
-			coverImg: coverImgFile,
-			otherImgs: otherImgFiles
-		}, {
-			success: function(result) {
-				console.log("success");
-				console.log(result);
-				//form.find("input").val("");
-				//form.find("select").val("");
-				//form.find("textarea").val("");
-			},
-			error: function(error) {
-				alert("new posting failed: " + error.message);
-			}
-		});
+		if(uploading == 0){
+			submitNewPost();
+		}
+
+		function submitNewPost(){
 			
+			Parse.Cloud.run('submitNewPost',{
+				subject: form.find("#inputSubject").val(),
+				location: form.find("#inputLocation").val(),
+				saleRent: form.find("#inputSaleRent").val(),
+				type: form.find("#inputType").val(),
+				name: form.find("#inputName").val(),
+				phone: form.find("#inputPhone").val(),
+				email: form.find("#inputEmail").val(),
+				shortDesc: form.find("#inputShortDesc").val(),
+				longDesc: form.find("#inputLongDesc").val(),
+				featured: false,
+				special1: false,
+				coverImg: coverImgFile,
+				otherImgs: otherImgFiles
+			}, {
+				success: function(results) {
+					console.log("success");
+					console.log(results);
+					//form.find("input").val("");
+					//form.find("select").val("");
+					//form.find("textarea").val("");
+					alert("new posting success");
+				},
+				error: function(error) {
+					alert("new posting failed: " + error.message);
+				}
+			});
+		}
+		
 		return false;
 	});
 	
 	$("#post-list-holder").on('click','.pfeatured',function(){
-		$(this).toggleClass("btn-success btn-default");
-		
-		console.log($(this).hasClass("btn-success"));
-		console.log($(this).parents(".post-card").data("object"));
-		//return;
+		var btn = $(this);
+		btn.toggleClass("btn-success btn-default");
 		
 		console.log("calling to cloudFunc setPostFeatured");
 		Parse.Cloud.run('setPostFeatured',{
@@ -99,7 +130,7 @@ $(document).ready(function(){
 				console.log(results);
 			},
 			error: function(error) {
-				$(this).toggleClass("btn-success btn-default");
+				btn.toggleClass("btn-success btn-default");
 				alert("Failed to update. Please try again.");
 				console.log(error);
 			}
@@ -107,11 +138,8 @@ $(document).ready(function(){
 	});
 	
 	$("#post-list-holder").on('click','.pspecial1',function(){
-		$(this).toggleClass("btn-success btn-default");
-		
-		console.log($(this).hasClass("btn-success"));
-		console.log($(this).parents(".post-card").data("object"));
-		//return;
+		var btn = $(this);
+		btn.toggleClass("btn-success btn-default");
 		
 		console.log("calling to cloudFunc setPostSpecial1");
 		Parse.Cloud.run('setPostSpecial1',{
@@ -122,7 +150,27 @@ $(document).ready(function(){
 				console.log(results);
 			},
 			error: function(error) {
-				$(this).toggleClass("btn-success btn-default");
+				btn.toggleClass("btn-success btn-default");
+				alert("Failed to update. Please try again.");
+				console.log(error);
+			}
+		});
+	});
+	
+	$("#post-list-holder").on('click','.pstatus',function(){
+		var btn = $(this);
+		btn.toggleClass("btn-success btn-default");
+		
+		console.log("calling to cloudFunc setPostStatus");
+		Parse.Cloud.run('setPostStatus',{
+			val: $(this).hasClass("btn-success")?"Approved":"Pending",
+			id: $(this).parents(".post-card").data("id")
+		}, {
+			success: function(results) {
+				console.log(results);
+			},
+			error: function(error) {
+				btn.toggleClass("btn-success btn-default");
 				alert("Failed to update. Please try again.");
 				console.log(error);
 			}
@@ -132,7 +180,7 @@ $(document).ready(function(){
 
 function loadPost(){
 	
-	loadData("Post", function(postList){
+	loadData(getQuery("Post"), function(postList){
 		G.posts = [];
 		G.postsJSON = [];
 		var container = $('#post-list-holder');
@@ -163,8 +211,11 @@ function generatePostCard(templateName, object){
 		} else if (key == "createdAt"){
 			var date = new Date(val);
 			template.find(prefix+key).text(date.getDate() +"-"+(date.getMonth()+1) +"-"+ date.getFullYear());
-		}  else if (key == "featured" || key == "special1"){
+		} else if (key == "featured" || key == "special1"){
 			if(val)
+				template.find(prefix+key).toggleClass("btn-success btn-default");
+		} else if (key == "status"){
+			if(val=="Approved")
 				template.find(prefix+key).toggleClass("btn-success btn-default");
 		} else {
 			template.find(prefix+key).text(val);
@@ -176,6 +227,10 @@ function generatePostCard(templateName, object){
 }
 
 function goTo(page){
+	var loadingTime = 150;
+	if(page=='my-property')
+		loadingTime = 2000;
+	
 	localStorage.setItem("curr_page",page);
 	if(page == "my-property")
 		loadPost();

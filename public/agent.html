@@ -181,17 +181,18 @@
 	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARqI7YBtq1-hFm12qxqWwC8xAjrJ2bJdQ&libraries=places" type="text/javascript"></script>
 	<style>
-	.card-hover{
-		transition: all 300ms;
-		border-radius: 20px;
-		width:300px;
-		height:300px;
-		display:inline-block;
-		font-size:4em;
+	.post-card {
+		margin: 15px 0px;
 	}
-	.card-hover:hover{
-		background: #aaa;
-		box-shadow: 0 0 15px #aaa;
+	.post-card img {
+		object-fit: cover;
+		width: 100%;
+		height: 300px;
+	}
+	@media only screen and (min-width: 768px) {
+	  .post-card img {
+		height: 200px;
+	  }
 	}
 	.nav-link{
 		cursor:pointer;
@@ -205,6 +206,7 @@
 		height:-webkit-calc(100% - 60px);
 		background:#fff;
 		z-index:10;
+		margin-top:10px;
 	}
 	.gear-holder{
 		position: relative;
@@ -239,14 +241,15 @@
 	
 </head>
 
-<body style='padding-top:60px'>
+<body style='padding-top:50px'>
+	<!-- Spinning icon during page load -->
 	<div id="page-loader" class='text-center'>
 		<div class="gear-holder">
 			<i class="fa fa-gear fa-spin"></i>
 		</div>
 	</div>
 
-    <!-- Navigation -->
+    <!-- Top Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top" style='background:#333'>
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -264,12 +267,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <a href="index.html">Home</a>
+                    </li> 
+                    <li>
                         <a href="#" class='nav-link' data-link='new-post'>New Property</a>
                     </li>
-                    <!--<li>
-                        <a href="index.html">Testimonials</a>
-                    </li> -->
-                    <li class='adminOnly'>
+                    <li class=''>
                         <a href="#" class='nav-link' data-link='my-property'>Property Listing</a>
                     </li>
                     <li class='adminOnly'>
@@ -285,10 +288,11 @@
         <!-- /.container -->
     </nav>
 
+	<!-- New Property Page -->
 	<div class="page-section" id='page-new-post'>
 		<div class='jumbotron'>
 			<div class='container'>
-				<h2>NEW PROPERTY LISTING FORM</h2>
+				<h2>PROPERTY LISTING FORM</h2>
 			</div>
 		</div>
 		<div class='container'>
@@ -328,7 +332,7 @@
 						  </select>
 						</div>
 						<div class="form-group">
-						  <label for="inputCoverImage">PROPERTY IMAGES (Cover)</label>
+						  <label for="inputCoverImage">PROPERTY IMAGE (Cover)</label>
 						  <input type="file" class="form-control" id="inputCoverImage" required>
 						</div>
 						<div class="form-group">
@@ -379,35 +383,55 @@
 		</div>
 	</div>
 	
-	<div class="container page-section" id='page-my-property'>
-		<div class='row'>
-			<div class="col-md-10">
-				my property
-				<div id="post-list-holder"></div>
+	<!-- Property Listing Page -->
+	<div class=" page-section" id='page-my-property'>
+	
+		<div class='jumbotron'>
+			<div class='container'>
+				<h2>PROPERTY LISTING</h2>
+			</div>
+		</div>
+		<div class='container'>
+			<div class='row'>
+				<div class="">
+					<div id="post-list-holder"></div>
+				</div>
 			</div>
 		</div>
 	</div>
 	
-	<div class="container page-section" id='page-my-account'>
-		<div class='row'>
-			<div class="col-md-10">
-				my account
+	<!-- My Account Page -->
+	<div class=" page-section" id='page-my-account'>
+		<div class='jumbotron'>
+			<div class='container'>
+				<h2>MY ACCOUNT</h2>
+			</div>
+		</div>
+		<div class='container'>
+			<div class='row'>
+				<div class="">
+				
+				</div>
 			</div>
 		</div>
 	</div>
 	
-	<div class='hidden'>
-		<div class='col-md-3 col-sm-4 col-sx-6 post-card post-card-template' data-prefix='p'>
+	<!-- Templates -->
+	<div class='template hidden'>
+		<div class='col-md-4 col-sm-6 col-lg-3 post-card post-card-template' data-prefix='p'>
 		
 			<div class='' style="border:1px solid black">
 				<div class=''>
-					<img class='pcoverImg' />
+					<img class='pcoverImg'/>
+					<div class='clearfix'></div>
 				</div>
+				<a class='btn btn-default btn-sm pfeatured btn-toggle-able'>Featured</a>
+				<a class='btn btn-default btn-sm pspecial1 btn-toggle-able'>PotM</a>
 				<div class='psubject'></div>
 				<div class='pcreatedAt'></div>
 				<div class='plocation'></div>
-				<a class='btn btn-default pfeatured btn-toggle-able'>Featured</a>
-				<a class='btn btn-default pspecial1 btn-toggle-able'>Property of the Month</a>
+				<a class='btn btn-default btn-sm pstatus btn-toggle-able'>Approve</a>
+				<a class='btn btn-default btn-sm'>Edit</a>
 			</div>
 		</div>
 	</div>
@@ -425,6 +449,16 @@
 	<script type="text/javascript" src="js/parse/parse-core.js"></script>
 	<script type="text/javascript" src="js/parse/app.js"></script>
 	<script type="text/javascript" src="js/parse/agent.js"></script>
+	<script>
+		if(Parse.User.current() == null)
+			location = "index.html";
+		else if(!Parse.User.current().get('isAdmin')){
+			$(".adminOnly").hide();
+			goTo("new-post");
+		}
+			
+		
+	</script>
 </body>
 
 </html>
