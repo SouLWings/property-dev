@@ -44,7 +44,7 @@ function loadData(query, callback){
 	});
 }
 
-function loadDataToTemplate(query, holder, template){
+function loadDataToTemplate(query, holder, template, callback){
 	console.log("loadDataToTemplate for " +query.className);
 	
 	loadData(query, function(objectList){
@@ -63,6 +63,9 @@ function loadDataToTemplate(query, holder, template){
 		} else {
 			container.html("No data.");
 		}
+		
+		if(callback !== undefined)
+			callback();
 	}); 
 }
 
@@ -86,6 +89,17 @@ function logout(){
 	location = '/';
 }
 
+function getUrlParams(param) {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+	if(vars[param]==undefined){
+		return '';
+	}
+    return vars[param];
+}
 
 /*
 		Sample usage

@@ -15,6 +15,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
 	<link rel="stylesheet" href="css/construction.css" type="text/css" />   <!-- YT -->
@@ -22,7 +23,6 @@
 	<link rel="stylesheet" href="css/dark.css" type="text/css" />   <!-- YT -->
     <link href="css/clean-blog.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -83,12 +83,12 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/rs1.jpg')">
+    <header class="intro-header" style="background-image: url('img/buy6.jpg')">
         <div class="container">
             <div class="row">
                 <div class=" col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h2 class='cover-text'>Your Best Real Estate Consultant</h2>
+                        <h2 class='cover-text'>Browse our property collection</h2>
                         <!--hr class="small">
                         <span class="subheading"></span-->
                     </div>
@@ -101,35 +101,77 @@
     <div class="container">
         <div class="row">
             <div class=" col-md-12">
-				<div class="text-center">
-					<h1>Find Malaysia Property & Real Estate</h1>
-					
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<input id="input-search" type="text" class="form-control" style='margin:30px 0px 20px 0px;height:51px;padding: 12px 12px 12px 45px;background: no-repeat 15px 50%;background-image: url(img/icon-searchqueries-20-dark.png);' placeholder="Search">
-						</div>
-					</div>
-					
-					<h5>Apartments / Condominiums / Bungalows / Semi - D Houses / Terrance / Town Houses / Service Residences / Penthouses / Office </h5>
-					<br/>
-					<br/>
-				</div>
-                <hr>
+
                 
 				<div class="row">
 					<div class="col-md-9">
-						<section>
-							<h2>Property of the month</h2>
-							<div class="row " id='special1-property-card-holder'>
+						<div class="">
+							<h1>Filters</h1>
+							
+							<div class="form-group col-sm-6 col-md-3">
+							  <label for="inputName">Keyword</label>
+							  <input type="text" class="form-control" id="inputKeyword" onkeyup="$(this).trigger('change')"/>
 							</div>
-						</section>
-						<br/>
-						<hr>
-						<section>
-							<h2>Featured Properties</h2>
-							<div class="row " id='featured-property-card-holder'>
+							
+							<div class="form-group col-sm-6 col-md-3">
+							  <label for="inputName">SALE / RENT</label>
+							  <select class="form-control filter" id="inputSaleRent">
+								<option value="">Any</option>
+								<option value="For Sale">For Sale</option>
+								<option value="For Rent">For Rent</option>
+							  </select>
 							</div>
-						</section>
+							
+							<div class="form-group col-sm-6 col-md-3">
+								<label for="inputName">Category</label>
+								<select class="form-control filter" id="inputType">
+									<option value="">Any</option>
+									<option value="Apartments">Apartments</option>
+									<option value="Condominiums">Condominiums</option>
+									<option value="Bungalows">Bungalows</option>
+									<option value="Semi-D Houses">Semi-D Houses</option>
+									<option value="Terrace">Terrace</option>
+									<option value="Town Houses">Town Houses</option>
+									<option value="Serviced Residences">Serviced Residences</option>
+									<option value="Penthouses">Penthouses</option>
+									<option value="Office">Office</option>
+								</select>
+							</div>
+							
+							<div class="form-group col-sm-6 col-md-3">
+								<label for="inputName">Location</label>
+								<select class="form-control filter" id="inputLocation">
+									<option value="">Any</option>
+									<option value="Apartments">Ampang</option>
+									<option value="Condominiums">Condominiums</option>
+									<option value="Bungalows">Bungalows</option>
+									<option value="Semi-D Houses">Semi-D Houses</option>
+									<option value="Terrace">Terrace</option>
+									<option value="Town Houses">Town Houses</option>
+									<option value="Serviced Residences">Serviced Residences</option>
+									<option value="Penthouses">Penthouses</option>
+									<option value="Office">Office</option>
+								</select>
+							</div>
+							
+							
+							<br/>
+						</div>
+						<div class="clearfix"></div>
+						<hr/>
+						<p style="display:none" id="no_result_found">No result found</p>
+						<div id="listing-property-card-holder">
+							<div class='listing-property-card listing-property-card-template' data-prefix='p'>
+								<img class="pcoverImg" src='img/prop1.jpg' />
+								<div style='display:inline-block;width:50%'>
+									<div class='psubject'>Chemara Hills - Castilla</div>
+									<div class='createdAt grey-text pcreatedAt'>Jan 16, 2016</div>
+									<div class='location grey-text plocation'>Seremban</div>
+								</div>
+								<div class='clearfix'>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="col-md-3">
 						<div class='well text-center'>
@@ -153,7 +195,7 @@
         </div>
     </div>
 
-<br>
+	<br>
 
 			<!-- Footer
 		============================================= -->
@@ -356,20 +398,22 @@
 	<script type="text/javascript" src="js/parse/parse-core.js"></script>
 	<script type="text/javascript" src="js/parse/app.js"></script>
 	<script>
-		initHomepage();
+		initListingPage();
 	</script>
 	
 	<div class="template-holder hidden">
-	
-		<div class='col-md-4 v-property-card v-property-card-template template' data-prefix='p'>
-			<img class="pcoverImg" src='img/prop1.jpg' />
-			<div style=''>
-				<div class='psubject'>Chemara Hills - Castilla</div>
-				<span class="label label-success pcreatedAt">Jan 16, 2016</span>
-				<span class="label label-success plocation">Seremban</span>
-			</div>
-		</div>
 		
+		<div class='listing-property-card listing-property-card-template template' data-prefix='p'>
+			<img class="pcoverImg" src='img/prop1.jpg' />
+			<div style='display:inline-block;width:50%'>
+				<div class='psubject'>Chemara Hills - Castilla</div>
+				<div class='createdAt grey-text pcreatedAt'>Jan 16, 2016</div>
+				<div class='location grey-text plocation'>Seremban</div>
+			</div>
+			<div class='clearfix'></div>
+			<hr/>
+		</div>
+				
 		<div class='h-property-card h-property-card-template template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style='display:inline-block;width:50%'>
@@ -380,6 +424,25 @@
 			<div class='clearfix'>
 			</div>
 		</div>
+		
+		<style>
+			.listing-property-card{
+				clear:both;
+				margin:10px 0;
+			}
+			.listing-property-card img{
+				object-fit: cover;
+				float:left;
+				width:40%;
+				margin-right:4%;
+				height:150px;
+			}
+			@media only screen and (min-width: 768px) {
+				.listing-property-card img{
+					height:200px;
+				}
+			}
+		</style>
 	</div>
 </body>
 

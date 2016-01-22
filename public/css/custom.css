@@ -1,3 +1,7 @@
+.psubject{
+	cursor:pointer;
+}
+
 .cover-text{
 	font-size:48px;
 	font-weight:400;
@@ -55,4 +59,24 @@
 	border-radius:0;
 	border: 2px solid #ccc;
 	padding: 8px 14px;
+}
+
+img.cover-fit-width{
+	object-fit: cover;
+	width:100%;
+}
+
+#imgSlider .slider-arrow:hover{
+	background:rgba(0,0,0,0.5);
+
+}
+#imgSlider .slider-arrow{
+	font-size:2em;
+	cursor:pointer;
+	top:205px;
+	padding:20px 15px;
+	background:rgba(0,0,0,0.2);
+	transition: all 400ms;
+	color:white;
+	position:absolute;
 }

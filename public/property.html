@@ -15,6 +15,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
 	<link rel="stylesheet" href="css/construction.css" type="text/css" />   <!-- YT -->
@@ -22,7 +23,6 @@
 	<link rel="stylesheet" href="css/dark.css" type="text/css" />   <!-- YT -->
     <link href="css/clean-blog.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -83,12 +83,12 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/rs1.jpg')">
+    <header class="intro-header pcoverImgbg" style="background-image: url('img/buy6.jpg')">
         <div class="container">
             <div class="row">
                 <div class=" col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h2 class='cover-text'>Your Best Real Estate Consultant</h2>
+                        <h2 class='cover-text psubject'>Astoria Ampang</h2>
                         <!--hr class="small">
                         <span class="subheading"></span-->
                     </div>
@@ -101,35 +101,58 @@
     <div class="container">
         <div class="row">
             <div class=" col-md-12">
-				<div class="text-center">
-					<h1>Find Malaysia Property & Real Estate</h1>
-					
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<input id="input-search" type="text" class="form-control" style='margin:30px 0px 20px 0px;height:51px;padding: 12px 12px 12px 45px;background: no-repeat 15px 50%;background-image: url(img/icon-searchqueries-20-dark.png);' placeholder="Search">
-						</div>
-					</div>
-					
-					<h5>Apartments / Condominiums / Bungalows / Semi - D Houses / Terrance / Town Houses / Service Residences / Penthouses / Office </h5>
-					<br/>
-					<br/>
-				</div>
-                <hr>
                 
 				<div class="row">
 					<div class="col-md-9">
-						<section>
-							<h2>Property of the month</h2>
-							<div class="row " id='special1-property-card-holder'>
-							</div>
-						</section>
+						<h2 class="psubject">Astoria Ampang</h2>
+						<div class="text-muted pcreatedAt">January 14, 2016</div>
+						<div class="pshortDesc">
+							<h3>Open for Registration </h3>
+							<p><b>Serviced Residence - Ampang, Selangor</b></p>
+							<p class="text-muted">From RM 494,000 - RM 2,000,000</p>
+						</div>
+						<div id="imgSlider" class="pcoverImgbg" style="height:470px;position:relative;background-image: url('img/buy6.jpg');background-size:cover;background-position:center center;">
+							<div class="slider-arrow" style="left:0"><</div>
+							<div class="slider-arrow" style="right:0">></div>
+						</div>
 						<br/>
-						<hr>
-						<section>
-							<h2>Featured Properties</h2>
-							<div class="row " id='featured-property-card-holder'>
+						<div class="plongDesc">
+							<p><b>City living is often associated with staying in a concrete jungle where one is surrounded by tall, beautiful skyscrapers and all sorts of daily conveniences in a bustling central business district. Consequently, there is less space provided for parks and facilities for recreational living. With that in mind, Land & General Berhad will be developing Astoria Ampang into a serviced residence that promotes healthy living.<br/><br/>
+
+							To promote healthy living in the city centre, the company will create a playground that comprises a live water stream, waterfall, park, jogging track, cycling track, hammock garden and many others which will altogether occupy 5.7 acres of land. The playground will take up about 3 to 4 acres of land and will sit on the development’s Level 6 podium.</b></p>
+						</div>
+						<br/>
+						<hr/>
+						<br/>
+						<form role="form" id="new-post-form">
+							<h3>Contact Negotiator</h3>
+							<div class="box-body">
+							<div class="form-group">
+							  <label for="inputName">Name</label>
+							  <input type="text" class="form-control" id="inputName" required>
 							</div>
-						</section>
+							<div class="form-group">
+							  <label for="inputEmail">Email</label>
+							  <input type="email" class="form-control" id="inputEmail" required>
+							</div>
+							<div class="form-group">
+							  <label for="inputEMail">Phone</label>
+							  <input type="text" class="form-control" id="inputPhone" required>
+							</div>
+							<div class="form-group">
+							  <label for="inputShortDesc">Message</label>
+							  <textarea class="form-control" id="inputMessage" required></textarea>
+							</div>
+							
+							<div class="form-group">
+								<input type="checkbox" class="" id="inputAgree">
+								I agree to receive updates from realestate.com and partners of realestate.com.
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+							</div>
+						  </div>
+						</form>
 					</div>
 					<div class="col-md-3">
 						<div class='well text-center'>
@@ -153,7 +176,7 @@
         </div>
     </div>
 
-<br>
+	<br>
 
 			<!-- Footer
 		============================================= -->
@@ -356,12 +379,12 @@
 	<script type="text/javascript" src="js/parse/parse-core.js"></script>
 	<script type="text/javascript" src="js/parse/app.js"></script>
 	<script>
-		initHomepage();
+		initPropertyPage();
 	</script>
 	
 	<div class="template-holder hidden">
 	
-		<div class='col-md-4 v-property-card v-property-card-template template' data-prefix='p'>
+		<div class='col-md-4 v-property-card v-property-card-template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style=''>
 				<div class='psubject'>Chemara Hills - Castilla</div>
@@ -370,7 +393,7 @@
 			</div>
 		</div>
 		
-		<div class='h-property-card h-property-card-template template' data-prefix='p'>
+		<div class='h-property-card h-property-card-template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style='display:inline-block;width:50%'>
 				<div class='psubject'>Chemara Hills - Castilla</div>

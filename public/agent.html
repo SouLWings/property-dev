@@ -44,6 +44,7 @@
 	<script>
 
 	function initMap() {
+		return;
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 12,
 			center: {lat: 3.125, lng: 101.672 }
@@ -181,6 +182,18 @@
 	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARqI7YBtq1-hFm12qxqWwC8xAjrJ2bJdQ&libraries=places" type="text/javascript"></script>
 	<style>
+	.dashboard-card-hover{
+		padding-top:75px;
+		transition: all 300ms;
+		border-radius: 20px;
+		height:300px;
+		font-size:3em;
+		border:1px solid black;
+	}
+	.dashboard-card-hover:hover{
+		background: #aaa;
+		box-shadow: 0 0 15px #aaa;
+	}
 	.post-card {
 		margin: 15px 0px;
 	}
@@ -409,8 +422,33 @@
 		</div>
 		<div class='container'>
 			<div class='row'>
-				<div class="">
-				
+			</div>
+		</div>
+	</div>
+	
+	<!-- Dashboard Page -->
+	<div class=" page-section" id='page-dashboard'>
+		<div class='jumbotron'>
+			<div class='container'>
+				<h2>DASHBOARD</h2>
+			</div>
+		</div>
+		<div class='container'>
+			<div class='row'>
+				<div class="col-lg-4">
+					<div class="dashboard-card-hover text-center nav-link" data-link="new-post">
+						<i class="fa fa-asterisk"></i><br>New Property
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="dashboard-card-hover text-center nav-link" data-link="my-property">
+						<i class="fa fa-building"></i><br>Property Listing
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="dashboard-card-hover text-center nav-link" data-link="my-account">
+						<i class="fa fa-user"></i><br>My Account
+					</div>
 				</div>
 			</div>
 		</div>
@@ -418,7 +456,7 @@
 	
 	<!-- Templates -->
 	<div class='template hidden'>
-		<div class='col-md-4 col-sm-6 col-lg-3 post-card post-card-template' data-prefix='p'>
+		<div class=' col-sm-6 col-md-4 col-lg-3 post-card post-card-template template' data-prefix='p'>
 		
 			<div class='' style="border:1px solid black">
 				<div class=''>
@@ -452,12 +490,24 @@
 	<script>
 		if(Parse.User.current() == null)
 			location = "index.html";
+		else if(Parse.User.current().get('isAdmin')){	
+			var q = getUrlParams("p");
+			if(q!=''){
+				goTo(q);
+			} else {
+				goTo("dashboard");
+			}
+		}
 		else if(!Parse.User.current().get('isAdmin')){
-			$(".adminOnly").hide();
-			goTo("new-post");
+			$(".adminOnly").hide();			
+			var q = getUrlParams("p");
+			if(q!=''){
+				goTo(q);
+			} else {
+				goTo("new-post");
+			}
 		}
 			
-		
 	</script>
 </body>
 

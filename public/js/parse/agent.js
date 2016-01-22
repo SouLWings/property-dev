@@ -5,6 +5,7 @@ var otherImgFiles = [];
 var uploading = 0;
 
 $(document).ready(function(){
+
 	
 	$("#inputSubject").val("asd"),
 	$("#inputLocation").val("asd"),
@@ -16,7 +17,7 @@ $(document).ready(function(){
 	$("#inputShortDesc").val("asd"),
 	$("#inputLongDesc").val("asd"),
 	
-	$(".page-section").hide();
+	/* $(".page-section").hide();
 	pageloader.fadeOut(500,function(){
 			
 		if(localStorage.getItem("curr_page") != null){
@@ -24,7 +25,7 @@ $(document).ready(function(){
 		} else {
 			$("#page-new-post").show();
 		}
-	});
+	}); */
 	
 	$(".nav-link").click(function(){
 		goTo($(this).data("link"));
@@ -227,6 +228,7 @@ function generatePostCard(templateName, object){
 }
 
 function goTo(page){
+	history.pushState({}, "", "agent.html?p="+page);
 	var loadingTime = 150;
 	if(page=='my-property')
 		loadingTime = 2000;
@@ -240,12 +242,19 @@ function goTo(page){
 	pageloader.fadeIn(150, function(){
 		$(".page-section").hide();
 		$(page).show();
-		if(page == "#page-requester"){
+		/* if(page == "#page-requester"){
 			$('body').append($('<input id="pac-input" class="controls" type="text" placeholder="Search Box">'));
 			initMap();
 			maploaded = true;
 			console.log("maploaded");
-		}
+		} */
 		pageloader.fadeOut();
 	});
 }
+
+window.onpopstate = function(event) {
+	var q = getUrlParams("p");
+	if(q!=''){
+		goTo(q);
+	}
+};
