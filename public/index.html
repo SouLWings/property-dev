@@ -60,16 +60,16 @@
                         <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="index.html">For Sale</a>
+                        <a href="index.html">Available Properties</a>
                     </li>
                     <!--<li>
                         <a href="index.html">Testimonials</a>
                     </li> -->
                     <li>
-                        <a href="index.html">Contact</a>
+                        <a href="index.html">About Us</a>
                     </li>
                     <li>
-                        <a href="index.html">Blog</a>
+                        <a href="index.html">Contact Us</a>
                     </li>
                     <li>
                         <a href="login.html">For Agent</a>
@@ -105,12 +105,52 @@
 					<h1>Find Malaysia Property & Real Estate</h1>
 					
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<input id="input-search" type="text" class="form-control" style='margin:30px 0px 20px 0px;height:51px;padding: 12px 12px 12px 45px;background: no-repeat 15px 50%;background-image: url(img/icon-searchqueries-20-dark.png);' placeholder="Search">
+						<div class="col-md-8 col-md-offset-2 text-center">
+							<!-- <input id="input-search" type="text" class="form-control" style='margin:30px 0px 10px 0px;height:51px;padding: 12px 12px 12px 45px;background: no-repeat 15px 50%;background-image: url(img/icon-searchqueries-20-dark.png);' placeholder="Search">
+							<button class='btn btn-primary' style='margin:0px 0px 20px 0px'>Search</button> -->
+							<div class="input-group stylish-input-group" style="margin:30px 0px 10px 0px;">
+								<input id="input-search" type="text" class="form-control" style="height:51px;padding: 10px 10px 10px 20px;" placeholder="Search" >
+								<span class="input-group-addon" style="border-radius: 0;border: 2px solid #ccc;border-left:none">
+									<button type="submit" id="btn-search">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>  
+								</span>
+							</div>
+							<style>
+							.stylish-input-group .input-group-addon{
+								background: white !important; 
+							}
+							.stylish-input-group .form-control{
+								border-right:0; 
+								box-shadow:0 0 0; 
+								border-color:#ccc;
+							}
+							.stylish-input-group button{
+								border:0;
+								background:transparent;
+							}</style>
 						</div>
 					</div>
 					
-					<h5>Apartments / Condominiums / Bungalows / Semi - D Houses / Terrance / Town Houses / Service Residences / Penthouses / Office </h5>
+					<h5>
+					<a href="" class='keywords'>Apartments</a>
+					/ 
+					<a href="" class='keywords'>Condominiums</a>
+					/ 
+					<a href="" class='keywords'>Bungalows</a>
+					/ 
+					<a href="" class='keywords'>Semi - D Houses</a>
+					/ 
+					<a href="" class='keywords'>Terrance</a>
+					/ 
+					<a href="" class='keywords'>Town Houses</a>
+					/ 
+					<a href="" class='keywords'>Service Residences</a>
+					/ 
+					<a href="" class='keywords'>Penthouses</a>
+					/ 
+					<a href="" class='keywords'>Office</a>
+					</h5>
 					<br/>
 					<br/>
 				</div>
@@ -135,14 +175,17 @@
 						<div class='well text-center'>
 							<h3>Subscribe</h3>
 							<p>Sign up with your email address to receive news and updates.</p>
-							<input id="input-search" type="text" class="form-control" style='' placeholder="Email Address">
-							<br/>
-							<center><button class='btn btn-primary'>Sign Up</button></center>
+							<form id="form-subscribe">
+								<input id="input-email" type="email" class="form-control" style='' placeholder="Email Address" required>
+								<br/>
+								<center><button class='btn btn-primary'>Sign Up</button></center>
+							</form>
+							<span id="subscribe-success" class="label label-success plocation" style="display:none">Successfully subscribed</span>
 							<br/>
 							<small>We respect your privacy.</small>
 						</div>
 						<div>
-							<h3>Property Listing</h3>
+							<h3>Latest Property Listing</h3>
 							
 							<div class="" id='latest-property-card-holder'>
 							</div>
@@ -171,7 +214,7 @@
 
 							<img src="img/footer-widget-logo.png" alt="" class="pull-left" style="margin-top: 8px; padding-right: 18px; margin-right: 18px; border-right: 1px solid #4A4A4A;">
 
-							<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards with a Retina &amp; Responsive Approach. Browse the amazing Features this template offers.</p>
+							<p><strong>Helping</strong> you find home <strong>sweet</strong> home.  Browse for amazing properties offers.</p>
 
 							<hr style="margin: 30px 0;"></hr>
 
@@ -180,40 +223,39 @@
 								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
 									<ul>
 										<li><a href="#">Home</a></li>
-										<li><a href="#">About</a></li>
-										<li><a href="#">FAQs</a></li>
-										<li><a href="#">Support</a></li>
-										<li><a href="#">Contact</a></li>
+										<li><a href="#">For Sale</a></li>
+										<li><a href="#">About US</a></li>
+										<li><a href="#">Contact Us</a></li>
+										<li><a href="#">Career</a></li>
 									</ul>
 								</div>
 
 								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
 									<ul>
-										<li><a href="#">Shop</a></li>
-										<li><a href="#">Portfolio</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="#">Events</a></li>
-										<li><a href="#">Forums</a></li>
+										<li><a href="#">Apartments</a></li>
+										<li><a href="#">Condominiums</a></li>
+										<li><a href="#">Bungalows</a></li>
+										<li><a href="#">Semi-D Houses</a></li>
+										<li><a href="#">Terrace</a></li>
 									</ul>
 								</div>
 
 								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
 									<ul>
-										<li><a href="#">Corporate</a></li>
-										<li><a href="#">Agency</a></li>
-										<li><a href="#">eCommerce</a></li>
-										<li><a href="#">Personal</a></li>
-										<li><a href="#">One Page</a></li>
+										<li><a href="#">Town Houses</a></li>
+										<li><a href="#">Serviced Residences</a></li>
+										<li><a href="#">Penthouses</a></li>
+										<li><a href="#">Office</a></li>
 									</ul>
 								</div>
 
 								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
 									<ul>
-										<li><a href="#">Restaurant</a></li>
-										<li><a href="#">Wedding</a></li>
-										<li><a href="#">App Showcase</a></li>
-										<li><a href="#">Magazine</a></li>
-										<li><a href="#">Landing Page</a></li>
+										<li><a href="#">Selangor</a></li>
+										<li><a href="#">Penang</a></li>
+										<li><a href="#">Johor Bahru</a></li>
+										<li><a href="#">Perak</a></li>
+										<li><a href="#">Melaka</a></li>
 									</ul>
 								</div>
 
@@ -232,14 +274,14 @@
 								<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
 									<div class="footer-big-contacts">
 										<span>Call Us:</span>
-										(91) 22 55412474
+										(03) 123 4567
 									</div>
 								</div>
 
 								<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
 									<div class="footer-big-contacts">
 										<span>Send an Email:</span>
-										info@canvas.com
+										info@mylandproperties.com
 									</div>
 								</div>
 
@@ -251,17 +293,19 @@
 							<div class="row">
 
 								<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
-									<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;background:#3B5998 !important;">
-										<i class="icon-facebook" style='width:38px;height:38px'></i>
+									<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin"><!-- style="margin-right: 20px;background:#3B5998 !important;" -->
+										<i class="icon-facebook" ></i>  <!--style='width:10px;height:10px'> -->
 									</a>
 									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
 								</div>
 								<div class="col-md-6 clearfix">
-									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-										
+									<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
+									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" > <!--style="margin-right: 10px;background:#3B5998 !important;"> -->
+  										
 										<i class="icon-rss"></i>
 									</a>
 									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+									</div>
 								</div>
 
 							</div>
@@ -280,13 +324,13 @@
 				<div class="container clearfix" style="padding:40px 0">
 
 					<div class="col-sm-6 col-xs-12">
-						Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br>
+						Copyrights &copy; 2016 All Rights Reserved by MyLand Properties.<br>
 						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
 					</div>
 
 					<div class="col-sm-6 col-xs-12">
 						<div class="pull-right copyright-links clearfix">
-							<a href="#">Home</a>/<a href="#">About Us</a>/<a href="#">Team</a>/<a href="#">Clients</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
+							<a href="#">Home</a>/<a href="#">Available Properties</a>/<a href="#">About Us</a>/<a href="#">Contact Us</a>/<a href="#">Career</a>/<a href="#">For Agents</a>
 						</div>
 					</div>
 
@@ -296,7 +340,6 @@
 
 		</footer><!-- #footer end -->
 
-	</div><!-- #wrapper end -->
 
 	<!-- Go To Top
 	============================================= 

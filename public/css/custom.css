@@ -66,17 +66,30 @@ img.cover-fit-width{
 	width:100%;
 }
 
-#imgSlider .slider-arrow:hover{
-	background:rgba(0,0,0,0.5);
+.pcoverImgbg .slider-arrow:hover{
+	background:rgba(0,0,0,0.6);
 
 }
-#imgSlider .slider-arrow{
+.pcoverImgbg .slider-arrow{
 	font-size:2em;
 	cursor:pointer;
 	top:205px;
 	padding:20px 15px;
-	background:rgba(0,0,0,0.2);
+	background:rgba(0,0,0,0.4);
 	transition: all 400ms;
 	color:white;
 	position:absolute;
+}
+
+
+.template img{
+	cursor: pointer;
+}
+
+.is-fixed .nav>li>a , .is-fixed .navbar-header .navbar-brand {
+	text-shadow: 0 0 0 #000;
+}
+
+.nav>li>a , .navbar-header .navbar-brand {
+	text-shadow: 0 0 3px #666;
 }

@@ -83,12 +83,12 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header pcoverImgbg" style="background-image: url('img/buy6.jpg')">
+    <header class="intro-header pcoverImgbg" style="/*background-image: url('img/buy6.jpg');*/">
         <div class="container">
             <div class="row">
                 <div class=" col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h2 class='cover-text psubject'>Astoria Ampang</h2>
+                        <h2 class='cover-text psubject'></h2>
                         <!--hr class="small">
                         <span class="subheading"></span-->
                     </div>
@@ -101,25 +101,75 @@
     <div class="container">
         <div class="row">
             <div class=" col-md-12">
-                
+
 				<div class="row">
 					<div class="col-md-9">
-						<h2 class="psubject">Astoria Ampang</h2>
-						<div class="text-muted pcreatedAt">January 14, 2016</div>
+						<h2 class="psubject"></h2>
+						<div class="text-muted pcreatedAt"></div>
 						<div class="pshortDesc">
-							<h3>Open for Registration </h3>
-							<p><b>Serviced Residence - Ampang, Selangor</b></p>
-							<p class="text-muted">From RM 494,000 - RM 2,000,000</p>
 						</div>
-						<div id="imgSlider" class="pcoverImgbg" style="height:470px;position:relative;background-image: url('img/buy6.jpg');background-size:cover;background-position:center center;">
+						<div id="imgSlider2"></div>
+						<!-- <div id="imgSlider" class="pcoverImgbg" style="height:470px;position:relative;background-image: url('img/buy6.jpg');background-size:cover;background-position:center center;">
 							<div class="slider-arrow" style="left:0"><</div>
 							<div class="slider-arrow" style="right:0">></div>
 						</div>
 						<br/>
-						<div class="plongDesc">
-							<p><b>City living is often associated with staying in a concrete jungle where one is surrounded by tall, beautiful skyscrapers and all sorts of daily conveniences in a bustling central business district. Consequently, there is less space provided for parks and facilities for recreational living. With that in mind, Land & General Berhad will be developing Astoria Ampang into a serviced residence that promotes healthy living.<br/><br/>
+						<div class="imgSelector text-center">
+								<span class="imgContainer">
+									<span class="mist on"></span><img src="img/prop3.jpg"/>
+								</span>
+								<span class="imgContainer">
+									<span class="mist">
+									</span>
+									<img src="img/prop2.jpg"/>
+								</span>
+								<span class="imgContainer">
+									<span class="mist on">
+									</span>
+									<img src="img/prop1.jpg"/>
+								</span>
+						</div> -->
+						<style>
+							.pcoverImgbg .arrow-left{
+								left:0;
+							}
+							.pcoverImgbg .arrow-right{
+								right:0;
+							}
+							.pcoverImgbg{
+								position:relative;
+								background-size:cover;
+								background-position:center center;
+								transition: background-image 0.5s ease-in-out;
+							}
+							.imgContainer{
+								position:relative;
+								cursor:pointer;
+							}
 
-							To promote healthy living in the city centre, the company will create a playground that comprises a live water stream, waterfall, park, jogging track, cycling track, hammock garden and many others which will altogether occupy 5.7 acres of land. The playground will take up about 3 to 4 acres of land and will sit on the development’s Level 6 podium.</b></p>
+							.imgSelector .mist.on{
+								position:absolute;
+								background:rgba(255,255,255,0.5);
+								width:100%;
+								height:84px;
+							}
+							.imgSelector img{
+								height:84px;
+								//margin-right: -4px;
+							}
+
+							.imgSelector{
+								display:none;
+								margin: 20px 0;
+							}
+							@media only screen and (min-width: 768px) {
+								.imgSelector{
+									display:block;
+								}
+							}
+						</style>
+						<br/>
+						<div class="plongDesc">
 						</div>
 						<br/>
 						<hr/>
@@ -143,7 +193,7 @@
 							  <label for="inputShortDesc">Message</label>
 							  <textarea class="form-control" id="inputMessage" required></textarea>
 							</div>
-							
+
 							<div class="form-group">
 								<input type="checkbox" class="" id="inputAgree">
 								I agree to receive updates from realestate.com and partners of realestate.com.
@@ -166,7 +216,7 @@
 						</div>
 						<div>
 							<h3>Property Listing</h3>
-							
+
 							<div class="" id='latest-property-card-holder'>
 							</div>
 						</div>
@@ -281,7 +331,7 @@
 								</div>
 								<div class="col-md-6 clearfix">
 									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-										
+
 										<i class="icon-rss"></i>
 									</a>
 									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
@@ -322,13 +372,13 @@
 	</div><!-- #wrapper end -->
 
 	<!-- Go To Top
-	============================================= 
+	=============================================
 	<div id="gotoTop" class="icon-angle-up"></div>-->
 
 	<!-- Footer Scripts
 	============================================= -->
- 
-   <!-- Footer 
+
+   <!-- Footer
     <footer>
         <div class="container">
             <div class="row">
@@ -363,9 +413,9 @@
                 </div>
             </div>
         </div>
-    </footer> --> 
- 
-	
+    </footer> -->
+
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -381,9 +431,9 @@
 	<script>
 		initPropertyPage();
 	</script>
-	
+
 	<div class="template-holder hidden">
-	
+
 		<div class='col-md-4 v-property-card v-property-card-template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style=''>
@@ -392,7 +442,7 @@
 				<span class="label label-success plocation">Seremban</span>
 			</div>
 		</div>
-		
+
 		<div class='h-property-card h-property-card-template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style='display:inline-block;width:50%'>
