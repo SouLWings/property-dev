@@ -241,6 +241,7 @@ function initListingPage(){
 			$("#no_result_found").show();
 		}
 
+		// remove the display none in the template
 		$(".listing-property-card-template").show();
 	});
 
