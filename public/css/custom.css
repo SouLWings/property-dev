@@ -94,6 +94,8 @@ img.cover-fit-width{
 	text-shadow: 0 0 0 #000;
 }
 
-.nav>li>a , .navbar-header .navbar-brand {
-	text-shadow: 0 0 3px #666;
+@media only screen and (min-width: 768px) {
+	.nav>li>a , .navbar-header .navbar-brand {
+		text-shadow: 0 0 3px #666;
+	}
 }
