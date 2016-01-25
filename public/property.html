@@ -144,6 +144,7 @@
 								right:0;
 							}
 							.pcoverImgbg{
+								height:180px;
 								position:relative;
 								background-size:cover;
 								background-position:center center;
@@ -173,12 +174,46 @@
 								.imgSelector{
 									display:block;
 								}
+								.pcoverImgbg{
+									height:470px;
+								}
 							}
 						</style>
 						<br/>
 						<div class="plongDesc">
 						</div>
 						<br/>
+					</div>
+					<div class="col-md-3">
+						<h3>Agent detail</h3>
+						<div class='well'>
+							<i class="fa fa-user"></i>
+							<span class="pname"></span>
+							<br/>
+							<i class="fa fa-phone"></i>
+							<span class="pphone"></span>
+							<br/>
+							<i class="fa fa-envelope"></i>
+							<span class="pemail"></span>
+							<br/>
+						</div>
+						<div class='well text-center'>
+							<h3>Subscribe</h3>
+							<p>Sign up with your email address to receive news and updates.</p>
+							<input id="input-search" type="text" class="form-control" style='' placeholder="Email Address">
+							<br/>
+							<center><button class='btn btn-primary'>Sign Up</button></center>
+							<br/>
+							<small>We respect your privacy.</small>
+						</div>
+						<div>
+							<h3>Latest Property Listing</h3>
+
+							<div class="" id='latest-property-card-holder'></div>
+						</div>
+					</div>
+					<div class='col-md-9'>
+
 						<hr/>
 						<br/>
 						<form role="form" id="contact-negotiator-form">
@@ -212,35 +247,6 @@
 								<br/>
 						  	</div>
 						</form>
-					</div>
-					<div class="col-md-3">
-						<div>
-							<h3>Agent:</h3>
-							<i class="fa fa-user"></i>
-							<div class="pname"></div>
-							<br/>
-							<i class="fa fa-phone"></i>
-							<div class="pphone"></div>
-							<br/>
-							<i class="fa fa-envelope"></i>
-							<div class="pemail"></div>
-							<br/>
-						</div>
-						<div class='well text-center'>
-							<h3>Subscribe</h3>
-							<p>Sign up with your email address to receive news and updates.</p>
-							<input id="input-search" type="text" class="form-control" style='' placeholder="Email Address">
-							<br/>
-							<center><button class='btn btn-primary'>Sign Up</button></center>
-							<br/>
-							<small>We respect your privacy.</small>
-						</div>
-						<div>
-							<h3>Property Listing</h3>
-
-							<div class="" id='latest-property-card-holder'>
-							</div>
-						</div>
 					</div>
 				</div>
             </div>
@@ -464,7 +470,7 @@
 			</div>
 		</div>
 
-		<div class='h-property-card h-property-card-template' data-prefix='p'>
+		<div class='h-property-card h-property-card-template template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style='display:inline-block;width:50%'>
 				<div class='psubject'>Chemara Hills - Castilla</div>

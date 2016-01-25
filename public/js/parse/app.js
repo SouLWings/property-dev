@@ -176,6 +176,11 @@ function initPropertyPage(){
 			}
 
 		});
+
+		var latestPropertyQuery = getQuery("Post");
+		latestPropertyQuery.equalTo("status", "Approved");
+		latestPropertyQuery.limit(3);
+		loadDataToTemplate(latestPropertyQuery, '#latest-property-card-holder', ".h-property-card-template");
 	  },
 	  error: function(object, error) {
 		// The object was not retrieved successfully.
@@ -241,7 +246,6 @@ function initListingPage(){
 			$("#no_result_found").show();
 		}
 
-		// remove the display none in the template
 		$(".listing-property-card-template").show();
 	});
 
@@ -288,7 +292,7 @@ function alanSlideShow(options){
 
 	var container = $($(options.container)[0]);
 	var coverImg = 	$("<div>").addClass("pcoverImgbg")
-					.css('height',height+"px")
+					//.css('height',height+"px")
 					.append('<div class="slider-arrow arrow-left"><</div>')
 					.append('<div class="slider-arrow arrow-right">></div>');
 
