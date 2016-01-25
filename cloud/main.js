@@ -6,6 +6,7 @@ var Mailgun = require('mailgun');
 Mailgun.initialize('sandbox54bff2c123394996b34e01f0c072990c.mailgun.org', 'key-42de377c0df35592ad8b2cc01b25ad05');
 
 var subscriptionMail = "Dear Admin,<br/><br/>You have a new subscription request from <b>%email%</b>.<br/><br/>Regards,<br/>MailBot";
+var adminMail = "katyyyt2208@gmail.com";
 
 Parse.Cloud.define("addSubscription", function(request, response) {
 	Mailgun.sendEmail({
@@ -17,7 +18,7 @@ Parse.Cloud.define("addSubscription", function(request, response) {
 		success: function(httpResponse) {
 			console.log("MailGun status: "+httpResponse.data.message);
 			Mailgun.sendEmail({
-				to: "katyyyt2208@gmail.com",
+				to: adminMail,
 				from: "no-reply@mylandprop.com",
 				subject: "New subscription request",
 				html: subscriptionMail.replace("%email%", request.params.email)
@@ -31,6 +32,44 @@ Parse.Cloud.define("addSubscription", function(request, response) {
 					response.error(httpResponse.data.message);
 				}
 			});
+		},
+		error: function(httpResponse) {
+			console.log("MailGun status: "+httpResponse.data.message);
+			response.error(httpResponse.data.message);
+		}
+	});
+
+});
+
+Parse.Cloud.define("contactNegotiator", function(request, response) {
+	Mailgun.sendEmail({
+		to: request.params.agentEmail,
+		from: "mailbot@mylandprop.com",
+		subject: "New customer contact request",
+		html: "Name: "+request.params.name+"<br/>Phone: "+request.params.phone+"<br/>Email: "+request.params.email+"<br/>Message: "+request.params.msg
+	}, {
+		success: function(httpResponse) {
+			console.log("MailGun status: "+httpResponse.data.message);
+			if(request.params.subscribe){
+				Mailgun.sendEmail({
+					to: adminMail,
+					from: "no-reply@mylandprop.com",
+					subject: "New subscription request",
+					html: subscriptionMail.replace("%email%", request.params.email)
+				}, {
+					success: function(httpResponse) {
+						console.log("MailGun status: "+httpResponse.data.message);
+						response.success("success");
+					},
+					error: function(httpResponse) {
+						console.log("MailGun status: "+httpResponse.data.message);
+						response.error(httpResponse.data.message);
+					}
+				});
+			} else {
+				response.success("success");
+			}
+
 		},
 		error: function(httpResponse) {
 			console.log("MailGun status: "+httpResponse.data.message);
@@ -243,7 +282,6 @@ Parse.Cloud.define("setPostFeatured", function(request, response) {
 		}
 	});
 });
-
 
 Parse.Cloud.define("setPostSpecial1", function(request, response) {
 	var query = new Parse.Query(Post);

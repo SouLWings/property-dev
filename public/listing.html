@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Excel RealEstate">
+    <meta name="description" content="MyLand Properties">
     <meta name="author" content="Your Best Real Estate Consultant">
-	<meta property="og:site_name" content="Excel RealEstate">
+	<meta property="og:site_name" content="MyLand Properties">
 	<meta property="og:title" content="Your Best Real Estate Consultant">
 
     <title>MyLand Properties</title>
@@ -28,18 +28,11 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
 
-    <!-- Navigation -->
+	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,26 +43,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">MyLand Properties</a>
+                <a class="navbar-brand" href="/">MyLand Properties</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="index.html">For Sale</a>
+                        <a href="listing.html">Properties</a>
                     </li>
                     <!--<li>
                         <a href="index.html">Testimonials</a>
                     </li> -->
                     <li>
-                        <a href="index.html">Contact</a>
+                        <a href="about.html">About</a>
                     </li>
                     <li>
-                        <a href="index.html">Blog</a>
+                        <a href="contact.html">Contact</a>
                     </li>
                     <li>
                         <a href="login.html">For Agent</a>
@@ -82,7 +75,6 @@
     </nav>
 
     <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('img/buy6.jpg')">
         <div class="container">
             <div class="row">
@@ -101,18 +93,16 @@
     <div class="container">
         <div class="row">
             <div class=" col-md-12">
-
-                
 				<div class="row">
 					<div class="col-md-9">
 						<div class="">
 							<h1>Filters</h1>
-							
+
 							<div class="form-group col-sm-6 col-md-3">
 							  <label for="inputName">Keyword</label>
-							  <input type="search" class="form-control" id="inputKeyword" onkeyup="$(this).trigger('change')"/>
+							  <input type="search" class="form-control" placeholder="Search" id="inputKeyword" onkeyup="$(this).trigger('change')"/>
 							</div>
-							
+
 							<div class="form-group col-sm-6 col-md-3">
 							  <label for="inputName">SALE / RENT</label>
 							  <select class="form-control filter" id="inputSaleRent">
@@ -121,7 +111,7 @@
 								<option value="For Rent">For Rent</option>
 							  </select>
 							</div>
-							
+
 							<div class="form-group col-sm-6 col-md-3">
 								<label for="inputName">Category</label>
 								<select class="form-control filter" id="inputType">
@@ -137,7 +127,7 @@
 									<option value="Office">Office</option>
 								</select>
 							</div>
-							
+
 							<div class="form-group col-sm-6 col-md-3">
 								<label for="inputName">Location</label>
 								<select class="form-control filter" id="inputLocation">
@@ -153,8 +143,8 @@
 									<option value="Office">Office</option>
 								</select>
 							</div>
-							
-							
+
+
 							<br/>
 						</div>
 						<div class="clearfix"></div>
@@ -175,7 +165,7 @@
 						</div>
 						<div>
 							<h3>Latest Property Listing</h3>
-							
+
 							<div class="" id='latest-property-card-holder'>
 							</div>
 						</div>
@@ -187,194 +177,148 @@
 
 	<br>
 
-			<!-- Footer
-		============================================= -->
-		<footer id="footer" class="dark">
+	<!-- Footer
+	============================================= -->
+	<footer id="footer" class="dark">
 
-			<div class="container">
+		<div class="container">
 
-				<!-- Footer Widgets
-				============================================= -->
-				<div class="footer-widgets-wrap clearfix" style="padding:80px 0 40px 0">
-
-					<div class="col-sm-8">
-
-						<div class="widget clearfix">
-
-							<img src="img/footer-widget-logo.png" alt="" class="pull-left" style="margin-top: 8px; padding-right: 18px; margin-right: 18px; border-right: 1px solid #4A4A4A;">
-
-							<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards with a Retina &amp; Responsive Approach. Browse the amazing Features this template offers.</p>
-
-							<hr style="margin: 30px 0;"></hr>
-
-							<div class="row" style="margin-bottom:30px">
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Home</a></li>
-										<li><a href="#">About</a></li>
-										<li><a href="#">FAQs</a></li>
-										<li><a href="#">Support</a></li>
-										<li><a href="#">Contact</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Shop</a></li>
-										<li><a href="#">Portfolio</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="#">Events</a></li>
-										<li><a href="#">Forums</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Corporate</a></li>
-										<li><a href="#">Agency</a></li>
-										<li><a href="#">eCommerce</a></li>
-										<li><a href="#">Personal</a></li>
-										<li><a href="#">One Page</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Restaurant</a></li>
-										<li><a href="#">Wedding</a></li>
-										<li><a href="#">App Showcase</a></li>
-										<li><a href="#">Magazine</a></li>
-										<li><a href="#">Landing Page</a></li>
-									</ul>
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-sm-4">
-
-						<div class="widget clear-bottommargin-sm clearfix">
-
-							<div class="row">
-
-								<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
-									<div class="footer-big-contacts">
-										<span>Call Us:</span>
-										(91) 22 55412474
-									</div>
-								</div>
-
-								<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
-									<div class="footer-big-contacts">
-										<span>Send an Email:</span>
-										info@canvas.com
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="widget subscribe-widget clearfix">
-							<div class="row">
-
-								<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
-									<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;background:#3B5998 !important;">
-										<i class="icon-facebook" style='width:38px;height:38px'></i>
-									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-								</div>
-								<div class="col-md-6 clearfix">
-									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-										
-										<i class="icon-rss"></i>
-									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-								</div>
-
-							</div>
-						</div>
-
-					</div>
-
-				</div><!-- .footer-widgets-wrap end -->
-
-			</div>
-
-			<!-- Copyrights
+			<!-- Footer Widgets
 			============================================= -->
-			<div id="copyrights">
+			<div class="footer-widgets-wrap clearfix" style="padding:80px 0 40px 0">
 
-				<div class="container clearfix" style="padding:40px 0">
+				<div class="col-sm-8">
 
-					<div class="col-sm-6 col-xs-12">
-						Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br>
-						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+					<div class="widget clearfix">
+
+						<img src="img/footer-widget-logo.png" alt="" class="pull-left" style="margin-top: 8px; padding-right: 18px; margin-right: 18px; border-right: 1px solid #4A4A4A;">
+
+						<p><strong>Helping</strong> you find home <strong>sweet</strong> home.  Browse for amazing properties offers.</p>
+
+						<hr style="margin: 30px 0;"></hr>
+
+						<div class="row" style="margin-bottom:30px">
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="#">Home</a></li>
+									<li><a href="listing.html">For Sale</a></li>
+									<li><a href="about.html">About US</a></li>
+									<li><a href="contact.html">Contact Us</a></li>
+									<li><a href="#">Career</a></li>
+								</ul>
+							</div>
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="listing.html?q=Apartments">Apartments</a></li>
+									<li><a href="listing.html?q=Condominiums">Condominiums</a></li>
+									<li><a href="listing.html?q=Bungalows">Bungalows</a></li>
+									<li><a href="listing.html?q=Semi-D Houses">Semi-D Houses</a></li>
+									<li><a href="listing.html?q=Terrace">Terrace</a></li>
+								</ul>
+							</div>
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="listing.html?q=Town Houses">Town Houses</a></li>
+									<li><a href="listing.html?q=Serviced Residences">Serviced Residences</a></li>
+									<li><a href="listing.html?q=Penthouses">Penthouses</a></li>
+									<li><a href="listing.html?q=Office">Office</a></li>
+								</ul>
+							</div>
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="listing.html?q=Selangor">Selangor</a></li>
+									<li><a href="listing.html?q=Penang">Penang</a></li>
+									<li><a href="listing.html?q=Johor Bahru">Johor Bahru</a></li>
+									<li><a href="listing.html?q=Perak">Perak</a></li>
+									<li><a href="listing.html?q=Melaka">Melaka</a></li>
+								</ul>
+							</div>
+
+						</div>
+
 					</div>
 
-					<div class="col-sm-6 col-xs-12">
-						<div class="pull-right copyright-links clearfix">
-							<a href="#">Home</a>/<a href="#">About Us</a>/<a href="#">Team</a>/<a href="#">Clients</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
+				</div>
+
+				<div class="col-sm-4">
+
+					<div class="widget clear-bottommargin-sm clearfix">
+
+						<div class="row">
+
+							<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
+								<div class="footer-big-contacts">
+									<span>Call Us:</span>
+									(03) 123 4567
+								</div>
+							</div>
+
+							<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
+								<div class="footer-big-contacts">
+									<span>Send us an Email:</span>
+									info@mylandproperties.com
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="widget subscribe-widget clearfix">
+						<div class="row">
+
+							<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
+								<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin"><!-- style="margin-right: 20px;background:#3B5998 !important;" -->
+									<i class="icon-facebook" ></i>  <!--style='width:10px;height:10px'> -->
+								</a>
+								<a href="https://www.facebook.com/MyLand-Properties-469927839699493/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+							</div>
+							<div class="col-md-6 clearfix">
+								<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
+								<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" > <!--style="margin-right: 10px;background:#3B5998 !important;"> -->
+
+									<i class="icon-rss"></i>
+								</a>
+								<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+								</div>
+							</div>
+
 						</div>
 					</div>
 
 				</div>
 
-			</div><!-- #copyrights end -->
+			</div><!-- .footer-widgets-wrap end -->
 
-		</footer><!-- #footer end -->
+		</div>
 
-	</div><!-- #wrapper end -->
+		<!-- Copyrights
+		============================================= -->
+		<div id="copyrights">
 
-	<!-- Go To Top
-	============================================= 
-	<div id="gotoTop" class="icon-angle-up"></div>-->
+			<div class="container clearfix" style="padding:40px 0">
 
-	<!-- Footer Scripts
-	============================================= -->
- 
-   <!-- Footer 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; Excel RealEstate 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer> --> 
- 
-	
+				<div class="col-sm-6 col-xs-12">
+					Copyrights &copy; 2016 All Rights Reserved by MyLand Properties.<br>
+					<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+				</div>
+
+				<div class="col-sm-6 col-xs-12">
+					<div class="pull-right copyright-links clearfix">
+						<a href="#">Home</a>/<a href="#">Available Properties</a>/<a href="#">About Us</a>/<a href="#">Contact Us</a>/<a href="#">Career</a>/<a href="#">For Agents</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div><!-- #copyrights end -->
+
+	</footer><!-- #footer end -->
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -390,20 +334,25 @@
 	<script>
 		initListingPage();
 	</script>
-	
+
 	<div class="template-holder hidden">
-		
-		<div class='listing-property-card listing-property-card-template template' data-prefix='p'>
-			<img class="pcoverImg" src='img/prop1.jpg' />
-			<div style='display:inline-block;width:50%'>
-				<div class='psubject'>Chemara Hills - Castilla</div>
-				<div class='createdAt grey-text pcreatedAt'>Jan 16, 2016</div>
-				<div class='location grey-text plocation'>Seremban</div>
+
+		<div class='listing-property-card listing-property-card-template template row' data-prefix='p'>
+			<div class='property-area'>
+				<div class="col-sm-6" style="background:linear-gradient(to right, #FF9800 0%,rgba(0,0,0,0.0) 100%);border-radius:5px 0px 0px 5px;padding-left:10px;padding-right:20px;">
+					<img class="pcoverImg" src='img/prop1.jpg' />
+				</div>
+				<div class="col-sm-6">
+					<div style='padding:15px 0px'>
+						<div class='psubject'>Chemara Hills - Castilla</div>
+						<div class='createdAt grey-text pcreatedAt'>Jan 16, 2016</div>
+						<div class='location grey-text plocation'>Seremban</div>
+					</div>
+				</div>
+				<div class='clearfix'></div>
 			</div>
-			<div class='clearfix'></div>
-			<hr/>
 		</div>
-				
+
 		<div class='h-property-card h-property-card-template template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style='display:inline-block;width:50%'>
@@ -414,17 +363,30 @@
 			<div class='clearfix'>
 			</div>
 		</div>
-		
+
 		<style>
 			.listing-property-card{
 				clear:both;
-				margin:10px 0;
+				margin:15px 0;
+			}
+			.listing-property-card .psubject{
+				font-size: 1.5em;
+				font-weight: 600;
+			}
+			.listing-property-card .property-area{
+				background: #f5f5f5;
+				border-radius:5px;
+				transition: all 300ms;
+				box-shadow: 0px 0px 1px #888;
+			}
+			.listing-property-card .property-area:hover{
+				box-shadow: 0px 2px 10px #888;
+				-webkit-transform: translate(0px,-2px);
+				transform: translate(0px,-2px);
 			}
 			.listing-property-card img{
 				object-fit: cover;
-				float:left;
-				width:40%;
-				margin-right:4%;
+				width:100%;
 				height:150px;
 			}
 			@media only screen and (min-width: 768px) {

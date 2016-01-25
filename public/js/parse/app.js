@@ -4,13 +4,38 @@ var Agent = Parse.Object.extend("Agent");
 $(document).ready(function(){
 
 	$('#form-subscribe').submit(function(){
+		var form = $(this);
 		Parse.Cloud.run('addSubscription',{
 			email: $(this).find("#input-email").val()
 		}, {
 			success: function(results) {
 				$("#subscribe-success").show();
 				//console.log("subscription success")/
-				$(this).find("#input-email").val("");
+				form.find("#input-email").val("");
+			},
+			error: function(error) {
+				//console.log("subscription fail")
+				alert("Fail to subscribe. Please check your internet connection.");
+			}
+		});
+
+		return false;
+	});
+
+	$('#contact-negotiator-form').submit(function(){
+		var form = $(this);
+		Parse.Cloud.run('contactNegotiator',{
+			agentEmail: $(".pemail").text(),
+			subscribe: $("#inputAgree").is(':checked'),
+			name: $(this).find("#inputName").val(),
+			email: $(this).find("#inputEmail").val(),
+			phone: $(this).find("#inputPhone").val(),
+			msg: $(this).find("#inputMessage").val()
+		}, {
+			success: function(results) {
+				$("#contactNegotiator-success").show();
+				//console.log("subscription success")
+				form.find("input, textarea").val("");
 			},
 			error: function(error) {
 				//console.log("subscription fail")

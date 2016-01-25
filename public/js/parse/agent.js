@@ -69,6 +69,10 @@ $(document).ready(function() {
 
 		var otherImgFiles = [];
 		var otherImg = $("#addOtherImgs")[0];
+
+		if(otherImg.files == undefined)
+			return;
+
 		if (otherImg.files.length > 0) {
 			var file = [];
 			var name = [];
@@ -332,6 +336,7 @@ $(document).ready(function() {
 
     $("#other-img-remove-card-holder").on('click', '.btn-remove-img', function() {
 		var imgSpan = $(this).parents("span");
+		imgSpan.find(".fa").toggleClass("fa-remove fa-gear fa-spin");
         Parse.Cloud.run('removePostImg', {
             img: imgSpan.data("file"),
             id: $('#edit-post-form').data("object").id
@@ -339,10 +344,12 @@ $(document).ready(function() {
             success: function(results) {
 				imgSpan.fadeOut();
                 $('#edit-slideshow-form').find("button").html($('#edit-slideshow-form').find("button").data("html"));
+				imgSpan.find(".fa").toggleClass("fa-remove fa-gear fa-spin");
             },
             error: function(error) {
                 alert("new posting failed: " + error.message);
                 $('#edit-slideshow-form').find("button").html($('#edit-slideshow-form').find("button").data("html"));
+				imgSpan.find(".fa").toggleClass("fa-remove fa-gear fa-spin");
             }
         });
     });
@@ -382,6 +389,8 @@ function loadPost() {
         G.posts = [];
         G.postsJSON = [];
         container.html("");
+		$('#post-list-holder').css("opacity","0");
+		$('#post-list-holder').css("padding-top","20px");
         if (postList.length > 0) {
             for (var i = 0; i < postList.length; i++) {
                 container.append(generatePostCard(".post-card-template", postList[i]));
@@ -391,6 +400,7 @@ function loadPost() {
         } else {
             container.html("No data.");
         }
+		container.animate({'opacity': '1', 'paddingTop': 0});
     });
 }
 
@@ -441,8 +451,9 @@ function goTo(page) {
         loadingTime = 2000;
 
     localStorage.setItem("curr_page", page);
-    if (page == "my-property")
-        loadPost();
+    if (page == "my-property"){
+		loadPost();
+	}
 
     page = "#page-" + page;
     //console.log("showing " + page + " page")

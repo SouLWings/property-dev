@@ -39,7 +39,7 @@
 
 <body>
 
-    <!-- Navigation -->
+	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,26 +50,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">MyLand Properties</a>
+                <a class="navbar-brand" href="/">MyLand Properties</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="index.html">For Sale</a>
+                        <a href="listing.html">Properties</a>
                     </li>
                     <!--<li>
                         <a href="index.html">Testimonials</a>
                     </li> -->
                     <li>
-                        <a href="index.html">Contact</a>
+                        <a href="about.html">About</a>
                     </li>
                     <li>
-                        <a href="index.html">Blog</a>
+                        <a href="contact.html">Contact</a>
                     </li>
                     <li>
                         <a href="login.html">For Agent</a>
@@ -105,9 +105,16 @@
 				<div class="row">
 					<div class="col-md-9">
 						<h2 class="psubject"></h2>
+						Posting Date:
 						<div class="text-muted pcreatedAt"></div>
-						<div class="pshortDesc">
-						</div>
+						Building Type:
+						<div class="ptype"></div>
+						Sale/Rent:
+						<div class="psaleRent"></div>
+						Location:
+						<div class="plocation"></div>
+						Short desc:
+						<div class="pshortDesc"></div>
 						<div id="imgSlider2"></div>
 						<!-- <div id="imgSlider" class="pcoverImgbg" style="height:470px;position:relative;background-image: url('img/buy6.jpg');background-size:cover;background-position:center center;">
 							<div class="slider-arrow" style="left:0"><</div>
@@ -174,37 +181,51 @@
 						<br/>
 						<hr/>
 						<br/>
-						<form role="form" id="new-post-form">
+						<form role="form" id="contact-negotiator-form">
 							<h3>Contact Negotiator</h3>
 							<div class="box-body">
-							<div class="form-group">
-							  <label for="inputName">Name</label>
-							  <input type="text" class="form-control" id="inputName" required>
-							</div>
-							<div class="form-group">
-							  <label for="inputEmail">Email</label>
-							  <input type="email" class="form-control" id="inputEmail" required>
-							</div>
-							<div class="form-group">
-							  <label for="inputEMail">Phone</label>
-							  <input type="text" class="form-control" id="inputPhone" required>
-							</div>
-							<div class="form-group">
-							  <label for="inputShortDesc">Message</label>
-							  <textarea class="form-control" id="inputMessage" required></textarea>
-							</div>
+								<div class="form-group">
+								  <label for="inputName">Name</label>
+								  <input type="text" class="form-control" id="inputName" required>
+								</div>
+								<div class="form-group">
+								  <label for="inputEmail">Email</label>
+								  <input type="email" class="form-control" id="inputEmail" required>
+								</div>
+								<div class="form-group">
+								  <label for="inputEMail">Phone</label>
+								  <input type="text" class="form-control" id="inputPhone" required>
+								</div>
+								<div class="form-group">
+								  <label for="inputShortDesc">Message</label>
+								  <textarea class="form-control" id="inputMessage" required></textarea>
+								</div>
 
-							<div class="form-group">
-								<input type="checkbox" class="" id="inputAgree">
-								I agree to receive updates from realestate.com and partners of realestate.com.
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-lg">Submit</button>
-							</div>
-						  </div>
+								<div class="form-group">
+									<input type="checkbox" class="" id="inputAgree">
+									I agree to receive updates from realestate.com and partners of realestate.com.
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</div>
+								<span id="contactNegotiator-success" class="label label-success" style="display:none">Successfully submitted</span>
+								<br/>
+						  	</div>
 						</form>
 					</div>
 					<div class="col-md-3">
+						<div>
+							<h3>Agent:</h3>
+							<i class="fa fa-user"></i>
+							<div class="pname"></div>
+							<br/>
+							<i class="fa fa-phone"></i>
+							<div class="pphone"></div>
+							<br/>
+							<i class="fa fa-envelope"></i>
+							<div class="pemail"></div>
+							<br/>
+						</div>
 						<div class='well text-center'>
 							<h3>Subscribe</h3>
 							<p>Sign up with your email address to receive news and updates.</p>
@@ -228,148 +249,148 @@
 
 	<br>
 
-			<!-- Footer
-		============================================= -->
-		<footer id="footer" class="dark">
+	<!-- Footer
+	============================================= -->
+	<footer id="footer" class="dark">
 
-			<div class="container">
+		<div class="container">
 
-				<!-- Footer Widgets
-				============================================= -->
-				<div class="footer-widgets-wrap clearfix" style="padding:80px 0 40px 0">
-
-					<div class="col-sm-8">
-
-						<div class="widget clearfix">
-
-							<img src="img/footer-widget-logo.png" alt="" class="pull-left" style="margin-top: 8px; padding-right: 18px; margin-right: 18px; border-right: 1px solid #4A4A4A;">
-
-							<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards with a Retina &amp; Responsive Approach. Browse the amazing Features this template offers.</p>
-
-							<hr style="margin: 30px 0;"></hr>
-
-							<div class="row" style="margin-bottom:30px">
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Home</a></li>
-										<li><a href="#">About</a></li>
-										<li><a href="#">FAQs</a></li>
-										<li><a href="#">Support</a></li>
-										<li><a href="#">Contact</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Shop</a></li>
-										<li><a href="#">Portfolio</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="#">Events</a></li>
-										<li><a href="#">Forums</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Corporate</a></li>
-										<li><a href="#">Agency</a></li>
-										<li><a href="#">eCommerce</a></li>
-										<li><a href="#">Personal</a></li>
-										<li><a href="#">One Page</a></li>
-									</ul>
-								</div>
-
-								<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Restaurant</a></li>
-										<li><a href="#">Wedding</a></li>
-										<li><a href="#">App Showcase</a></li>
-										<li><a href="#">Magazine</a></li>
-										<li><a href="#">Landing Page</a></li>
-									</ul>
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-sm-4">
-
-						<div class="widget clear-bottommargin-sm clearfix">
-
-							<div class="row">
-
-								<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
-									<div class="footer-big-contacts">
-										<span>Call Us:</span>
-										(91) 22 55412474
-									</div>
-								</div>
-
-								<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
-									<div class="footer-big-contacts">
-										<span>Send an Email:</span>
-										info@canvas.com
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="widget subscribe-widget clearfix">
-							<div class="row">
-
-								<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
-									<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;background:#3B5998 !important;">
-										<i class="icon-facebook" style='width:38px;height:38px'></i>
-									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-								</div>
-								<div class="col-md-6 clearfix">
-									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-
-										<i class="icon-rss"></i>
-									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-								</div>
-
-							</div>
-						</div>
-
-					</div>
-
-				</div><!-- .footer-widgets-wrap end -->
-
-			</div>
-
-			<!-- Copyrights
+			<!-- Footer Widgets
 			============================================= -->
-			<div id="copyrights">
+			<div class="footer-widgets-wrap clearfix" style="padding:80px 0 40px 0">
 
-				<div class="container clearfix" style="padding:40px 0">
+				<div class="col-sm-8">
 
-					<div class="col-sm-6 col-xs-12">
-						Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br>
-						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+					<div class="widget clearfix">
+
+						<img src="img/footer-widget-logo.png" alt="" class="pull-left" style="margin-top: 8px; padding-right: 18px; margin-right: 18px; border-right: 1px solid #4A4A4A;">
+
+						<p><strong>Helping</strong> you find home <strong>sweet</strong> home.  Browse for amazing properties offers.</p>
+
+						<hr style="margin: 30px 0;"></hr>
+
+						<div class="row" style="margin-bottom:30px">
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="#">Home</a></li>
+									<li><a href="listing.html">For Sale</a></li>
+									<li><a href="about.html">About US</a></li>
+									<li><a href="contact.html">Contact Us</a></li>
+									<li><a href="#">Career</a></li>
+								</ul>
+							</div>
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="listing.html?q=Apartments">Apartments</a></li>
+									<li><a href="listing.html?q=Condominiums">Condominiums</a></li>
+									<li><a href="listing.html?q=Bungalows">Bungalows</a></li>
+									<li><a href="listing.html?q=Semi-D Houses">Semi-D Houses</a></li>
+									<li><a href="listing.html?q=Terrace">Terrace</a></li>
+								</ul>
+							</div>
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="listing.html?q=Town Houses">Town Houses</a></li>
+									<li><a href="listing.html?q=Serviced Residences">Serviced Residences</a></li>
+									<li><a href="listing.html?q=Penthouses">Penthouses</a></li>
+									<li><a href="listing.html?q=Office">Office</a></li>
+								</ul>
+							</div>
+
+							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
+								<ul>
+									<li><a href="listing.html?q=Selangor">Selangor</a></li>
+									<li><a href="listing.html?q=Penang">Penang</a></li>
+									<li><a href="listing.html?q=Johor Bahru">Johor Bahru</a></li>
+									<li><a href="listing.html?q=Perak">Perak</a></li>
+									<li><a href="listing.html?q=Melaka">Melaka</a></li>
+								</ul>
+							</div>
+
+						</div>
+
 					</div>
 
-					<div class="col-sm-6 col-xs-12">
-						<div class="pull-right copyright-links clearfix">
-							<a href="#">Home</a>/<a href="#">About Us</a>/<a href="#">Team</a>/<a href="#">Clients</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
+				</div>
+
+				<div class="col-sm-4">
+
+					<div class="widget clear-bottommargin-sm clearfix">
+
+						<div class="row">
+
+							<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
+								<div class="footer-big-contacts">
+									<span>Call Us:</span>
+									(03) 123 4567
+								</div>
+							</div>
+
+							<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
+								<div class="footer-big-contacts">
+									<span>Send us an Email:</span>
+									info@mylandproperties.com
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="widget subscribe-widget clearfix">
+						<div class="row">
+
+							<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
+								<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin"><!-- style="margin-right: 20px;background:#3B5998 !important;" -->
+									<i class="icon-facebook" ></i>  <!--style='width:10px;height:10px'> -->
+								</a>
+								<a href="https://www.facebook.com/MyLand-Properties-469927839699493/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+							</div>
+							<div class="col-md-6 clearfix">
+								<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
+								<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" > <!--style="margin-right: 10px;background:#3B5998 !important;"> -->
+
+									<i class="icon-rss"></i>
+								</a>
+								<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+								</div>
+							</div>
+
 						</div>
 					</div>
 
 				</div>
 
-			</div><!-- #copyrights end -->
+			</div><!-- .footer-widgets-wrap end -->
 
-		</footer><!-- #footer end -->
+		</div>
 
-	</div><!-- #wrapper end -->
+		<!-- Copyrights
+		============================================= -->
+		<div id="copyrights">
+
+			<div class="container clearfix" style="padding:40px 0">
+
+				<div class="col-sm-6 col-xs-12">
+					Copyrights &copy; 2016 All Rights Reserved by MyLand Properties.<br>
+					<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+				</div>
+
+				<div class="col-sm-6 col-xs-12">
+					<div class="pull-right copyright-links clearfix">
+						<a href="#">Home</a>/<a href="#">Available Properties</a>/<a href="#">About Us</a>/<a href="#">Contact Us</a>/<a href="#">Career</a>/<a href="#">For Agents</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div><!-- #copyrights end -->
+
+	</footer><!-- #footer end -->
+
 
 	<!-- Go To Top
 	=============================================

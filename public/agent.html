@@ -203,11 +203,22 @@
 			border-radius: 20px;
 			height:300px;
 			font-size:3em;
-			border:1px solid black;
+			background:white;
 		}
 		.dashboard-card-hover:hover{
-			background: #aaa;
-			box-shadow: 0 0 15px #aaa;
+			box-shadow: 0px 2px 15px #888;
+			color:white;
+			-webkit-transform: translate(0px,-4px);
+			transform: translate(0px,-4px);
+		}
+		#new-post:hover{
+			background: #03A9F4;
+		}
+		#my-account:hover{
+			background: #9C27B0;
+		}
+		#my-property:hover{
+			background: #FF9800;
 		}
 
 		/* Property listing */
@@ -226,9 +237,8 @@
 		}
 		.post-card .post-card-frame:hover{
 			box-shadow: 0px 2px 15px #888;
-			-ms-transform: translate(0px,-1px); /* IE 9 */
-			-webkit-transform: translate(0px,-1px); /* Safari */
-			transform: translate(0px,-1px);
+			-webkit-transform: translate(0px,-2px);
+			transform: translate(0px,-2px);
 		}
 		.post-card .img-section{
 			position: relative;
@@ -619,17 +629,17 @@
 		<div class='container'>
 			<div class='row'>
 				<div class="col-lg-4">
-					<div class="dashboard-card-hover text-center nav-link" data-link="new-post">
+					<div id="new-post" class="dashboard-card-hover text-center nav-link" data-link="new-post">
 						<i class="fa fa-asterisk fa-3x"></i><br>New Property
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<div class="dashboard-card-hover text-center nav-link" data-link="my-property">
+					<div id="my-property" class="dashboard-card-hover text-center nav-link" data-link="my-property">
 						<i class="fa fa-building fa-3x"></i><br>Property Listing
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<div class="dashboard-card-hover text-center nav-link" data-link="my-account">
+					<div id="my-account" class="dashboard-card-hover text-center nav-link" data-link="my-account">
 						<i class="fa fa-user fa-3x"></i><br>My Account
 					</div>
 				</div>
@@ -667,7 +677,9 @@
 			</div>
 		</div>
 	</div>
+
 	<hr/>
+
     <footer>
         <div class="container">
 			<br/>
