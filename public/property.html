@@ -15,6 +15,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
 	<link rel="stylesheet" href="css/construction.css" type="text/css" />   <!-- YT -->
@@ -22,7 +23,6 @@
 	<link rel="stylesheet" href="css/dark.css" type="text/css" />   <!-- YT -->
     <link href="css/clean-blog.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -39,7 +39,7 @@
 
 <body>
 
-    <!-- Navigation -->
+	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -83,12 +83,12 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/rs1.jpg')">
+    <header class="intro-header pcoverImgbg" style="/*background-image: url('img/buy6.jpg');*/">
         <div class="container">
             <div class="row">
                 <div class=" col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h2 class='cover-text'>Your Best Real Estate Consultant</h2>
+                        <h2 class='cover-text psubject'></h2>
                         <!--hr class="small">
                         <span class="subheading"></span-->
                     </div>
@@ -101,92 +101,142 @@
     <div class="container">
         <div class="row">
             <div class=" col-md-12">
-				<div class="text-center">
-					<h1>Find Malaysia Property & Real Estate</h1>
-
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2 text-center">
-							<!-- <input id="input-search" type="text" class="form-control" style='margin:30px 0px 10px 0px;height:51px;padding: 12px 12px 12px 45px;background: no-repeat 15px 50%;background-image: url(img/icon-searchqueries-20-dark.png);' placeholder="Search">
-							<button class='btn btn-primary' style='margin:0px 0px 20px 0px'>Search</button> -->
-							<div class="input-group stylish-input-group" style="margin:30px 0px 10px 0px;">
-								<input id="input-search" type="text" class="form-control" style="height:51px;padding: 10px 10px 10px 20px;" placeholder="Search" >
-								<span class="input-group-addon" style="border-radius: 0;border: 2px solid #ccc;border-left:none">
-									<button type="submit" id="btn-search">
-										<span class="glyphicon glyphicon-search"></span>
-									</button>
-								</span>
-							</div>
-							<style>
-							.stylish-input-group .input-group-addon{
-								background: white !important;
-							}
-							.stylish-input-group .form-control{
-								border-right:0;
-								box-shadow:0 0 0;
-								border-color:#ccc;
-							}
-							.stylish-input-group button{
-								border:0;
-								background:transparent;
-							}</style>
-						</div>
-					</div>
-
-					<h5>
-						<a href="" class='keywords'>Apartments</a>
-						/
-						<a href="" class='keywords'>Condominiums</a>
-						/
-						<a href="" class='keywords'>Bungalows</a>
-						/
-						<a href="" class='keywords'>Semi - D Houses</a>
-						/
-						<a href="" class='keywords'>Terrance</a>
-						/
-						<a href="" class='keywords'>Town Houses</a>
-						/
-						<a href="" class='keywords'>Service Residences</a>
-						/
-						<a href="" class='keywords'>Penthouses</a>
-						/
-						<a href="" class='keywords'>Office</a>
-					</h5>
-					<br/>
-					<br/>
-				</div>
-
-                <hr/>
 
 				<div class="row">
 					<div class="col-md-9">
-						<section>
-							<h2>Property of the month</h2>
-							<div class="row " id='special1-property-card-holder'>
-							</div>
-						</section>
+						<h2 class="psubject"></h2>
+						Posting Date:
+						<div class="text-muted pcreatedAt"></div>
+						Building Type:
+						<div class="ptype"></div>
+						Sale/Rent:
+						<div class="psaleRent"></div>
+						Location:
+						<div class="plocation"></div>
+						Short desc:
+						<div class="pshortDesc"></div>
+						<div id="imgSlider2"></div>
+						<!-- <div id="imgSlider" class="pcoverImgbg" style="height:470px;position:relative;background-image: url('img/buy6.jpg');background-size:cover;background-position:center center;">
+							<div class="slider-arrow" style="left:0"><</div>
+							<div class="slider-arrow" style="right:0">></div>
+						</div>
 						<br/>
-						<hr>
-						<section>
-							<h2>Featured Properties</h2>
-							<div class="row " id='featured-property-card-holder'>
-							</div>
-						</section>
+						<div class="imgSelector text-center">
+								<span class="imgContainer">
+									<span class="mist on"></span><img src="img/prop3.jpg"/>
+								</span>
+								<span class="imgContainer">
+									<span class="mist">
+									</span>
+									<img src="img/prop2.jpg"/>
+								</span>
+								<span class="imgContainer">
+									<span class="mist on">
+									</span>
+									<img src="img/prop1.jpg"/>
+								</span>
+						</div> -->
+						<style>
+							.pcoverImgbg .arrow-left{
+								left:0;
+							}
+							.pcoverImgbg .arrow-right{
+								right:0;
+							}
+							.pcoverImgbg{
+								position:relative;
+								background-size:cover;
+								background-position:center center;
+								transition: background-image 0.5s ease-in-out;
+							}
+							.imgContainer{
+								position:relative;
+								cursor:pointer;
+							}
+
+							.imgSelector .mist.on{
+								position:absolute;
+								background:rgba(255,255,255,0.5);
+								width:100%;
+								height:84px;
+							}
+							.imgSelector img{
+								height:84px;
+								//margin-right: -4px;
+							}
+
+							.imgSelector{
+								display:none;
+								margin: 20px 0;
+							}
+							@media only screen and (min-width: 768px) {
+								.imgSelector{
+									display:block;
+								}
+							}
+						</style>
+						<br/>
+						<div class="plongDesc">
+						</div>
+						<br/>
+						<hr/>
+						<br/>
+						<form role="form" id="contact-negotiator-form">
+							<h3>Contact Negotiator</h3>
+							<div class="box-body">
+								<div class="form-group">
+								  <label for="inputName">Name</label>
+								  <input type="text" class="form-control" id="inputName" required>
+								</div>
+								<div class="form-group">
+								  <label for="inputEmail">Email</label>
+								  <input type="email" class="form-control" id="inputEmail" required>
+								</div>
+								<div class="form-group">
+								  <label for="inputEMail">Phone</label>
+								  <input type="text" class="form-control" id="inputPhone" required>
+								</div>
+								<div class="form-group">
+								  <label for="inputShortDesc">Message</label>
+								  <textarea class="form-control" id="inputMessage" required></textarea>
+								</div>
+
+								<div class="form-group">
+									<input type="checkbox" class="" id="inputAgree">
+									I agree to receive updates from realestate.com and partners of realestate.com.
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</div>
+								<span id="contactNegotiator-success" class="label label-success" style="display:none">Successfully submitted</span>
+								<br/>
+						  	</div>
+						</form>
 					</div>
 					<div class="col-md-3">
+						<div>
+							<h3>Agent:</h3>
+							<i class="fa fa-user"></i>
+							<div class="pname"></div>
+							<br/>
+							<i class="fa fa-phone"></i>
+							<div class="pphone"></div>
+							<br/>
+							<i class="fa fa-envelope"></i>
+							<div class="pemail"></div>
+							<br/>
+						</div>
 						<div class='well text-center'>
 							<h3>Subscribe</h3>
 							<p>Sign up with your email address to receive news and updates.</p>
-							<form id="form-subscribe">
-								<input id="input-email" type="email" class="form-control" style='' placeholder="Email Address" required>
-								<br/>
-								<center><button class='btn btn-primary'>Sign Up</button></center>
-							</form>
-							<span id="subscribe-success" class="label label-success" style="display:none">Successfully subscribed</span>
+							<input id="input-search" type="text" class="form-control" style='' placeholder="Email Address">
+							<br/>
+							<center><button class='btn btn-primary'>Sign Up</button></center>
 							<br/>
 							<small>We respect your privacy.</small>
 						</div>
 						<div>
-							<h3>Latest Property Listing</h3>
+							<h3>Property Listing</h3>
 
 							<div class="" id='latest-property-card-holder'>
 							</div>
@@ -197,9 +247,9 @@
         </div>
     </div>
 
-	<br/>
+	<br>
 
-		<!-- Footer
+	<!-- Footer
 	============================================= -->
 	<footer id="footer" class="dark">
 
@@ -400,12 +450,12 @@
 	<script type="text/javascript" src="js/parse/parse-core.js"></script>
 	<script type="text/javascript" src="js/parse/app.js"></script>
 	<script>
-		initHomepage();
+		initPropertyPage();
 	</script>
 
 	<div class="template-holder hidden">
 
-		<div class='col-md-4 v-property-card v-property-card-template template' data-prefix='p'>
+		<div class='col-md-4 v-property-card v-property-card-template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style=''>
 				<div class='psubject'>Chemara Hills - Castilla</div>
@@ -414,7 +464,7 @@
 			</div>
 		</div>
 
-		<div class='h-property-card h-property-card-template template' data-prefix='p'>
+		<div class='h-property-card h-property-card-template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style='display:inline-block;width:50%'>
 				<div class='psubject'>Chemara Hills - Castilla</div>

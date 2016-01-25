@@ -1,13 +1,17 @@
 Parse.initialize("yICswxr5amAnGVVPzIWwApo62ikbYJ95ODrc9rBL", "p3Bv2559bFtgBmWkuR6wHmPPIrmrDHO4D2fXAGvQ");
 var G = {};
 
+function lg(o){
+	console.log(o);
+}
+
 function generateCard(templateName, object){
 	var template = $($(templateName).first().clone());
 	template.removeClass(templateName.replace(".",""));
 	var prefix = "." + template.data("prefix");
 	template.data("id", object.id);
 	template.data("object", object);
-	
+
 	object = object.toJSON();
 	$.each(object, function(key, val){
 		if(val.url !== undefined){
@@ -18,9 +22,9 @@ function generateCard(templateName, object){
 		} else {
 			template.find(prefix+key).text(val);
 		}
-		
+
 	});
-	
+
 	return template;
 }
 
@@ -31,10 +35,10 @@ function getQuery(entity){
 	return query;
 }
 
-function loadData(query, callback){        
+function loadData(query, callback){
     query.find({
 		success: function(results) {
-			console.log("Successfully retrieved " + results.length + " "+query.className+"s.");
+			//console.log("Successfully retrieved " + results.length + " "+query.className+"s.");
 			callback(results);
 		},
 		error: function(error) {
@@ -44,17 +48,17 @@ function loadData(query, callback){
 	});
 }
 
-function loadDataToTemplate(query, holder, template){
-	console.log("loadDataToTemplate for " +query.className);
-	
+function loadDataToTemplate(query, holder, template, callback){
+	//console.log("loadDataToTemplate for " +query.className);
+
 	loadData(query, function(objectList){
 		if(objectList.message !== undefined){
 			alert(objectList.message)
 			return;
 		}
-		
+
 		var container = $(holder);
-		console.log(container);
+		//console.log(container);
 		container.html("");
 		if(objectList.length > 0){
 			for (var i = 0; i < objectList.length; i++) {
@@ -63,13 +67,16 @@ function loadDataToTemplate(query, holder, template){
 		} else {
 			container.html("No data.");
 		}
-	}); 
+
+		if(callback !== undefined)
+			callback();
+	});
 }
 
 function login(email, password, callback){
     Parse.User.logIn(email, password, {
         success: function(user) {
-			console.log("logged in");
+			//console.log("logged in");
 			if(callback != undefined)
 				callback.success();
 		},
@@ -86,6 +93,17 @@ function logout(){
 	location = '/';
 }
 
+function getUrlParams(param) {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+    function(m,key,value) {
+      vars[key] = value;
+    });
+	if(vars[param]==undefined){
+		return '';
+	}
+    return vars[param];
+}
 
 /*
 		Sample usage
@@ -110,10 +128,10 @@ function logout(){
 			book_before: form.find('input[name="optionsRadios"]:checked').val()
 		}, {
 			success: function(tutorRequest) {
-		  
+
 			},
 			error: function(object, error) {
-				
+
 			}
 		});
 
@@ -121,13 +139,13 @@ function logout(){
 			email: $(this).find("input[name='email']").val()
 		}, {
 			success: function(results) {
-				
+
 			},
 			error: function(error) {
-				
+
 			}
 		});
-	
+
 
 
 	var fileUploadControl = $("input[name='cert1']")[0];
@@ -135,7 +153,7 @@ function logout(){
 	if (fileUploadControl.files.length > 0) {
 		var file = fileUploadControl.files[0];
 		var name = fileUploadControl.files[0].name;
-   
+
 		parseFileCert1 = new Parse.File(name, file);
 	}
-*/	   
+*/

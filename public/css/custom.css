@@ -1,3 +1,11 @@
+body{
+	background: #fff;
+}
+
+.psubject{
+	cursor:pointer;
+}
+
 .cover-text{
 	font-size:48px;
 	font-weight:400;
@@ -39,7 +47,7 @@
 	height:200px;
 }
 .copyright-links a:first-child{
-	margin:0px 10px 0px 0px !important; 
+	margin:0px 10px 0px 0px !important;
 }
 
 .copyright-links a{
@@ -55,4 +63,37 @@
 	border-radius:0;
 	border: 2px solid #ccc;
 	padding: 8px 14px;
+}
+
+img.cover-fit-width{
+	object-fit: cover;
+	width:100%;
+}
+
+.pcoverImgbg .slider-arrow:hover{
+	background:rgba(0,0,0,0.6);
+
+}
+.pcoverImgbg .slider-arrow{
+	font-size:2em;
+	cursor:pointer;
+	top:205px;
+	padding:20px 15px;
+	background:rgba(0,0,0,0.4);
+	transition: all 400ms;
+	color:white;
+	position:absolute;
+}
+
+
+.template img{
+	cursor: pointer;
+}
+
+.is-fixed .nav>li>a , .is-fixed .navbar-header .navbar-brand {
+	text-shadow: 0 0 0 #000;
+}
+
+.nav>li>a , .navbar-header .navbar-brand {
+	text-shadow: 0 0 3px #666;
 }
