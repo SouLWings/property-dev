@@ -11,8 +11,8 @@ $(document).ready(function() {
     $("#inputName").val("asd");
     $("#inputPhone").val("asd");
     $("#inputEmail").val("asd");
-    $("#inputShortDesc").val("asd");
-    $("#inputLongDesc").val("asd");
+    $("#inputShortDesc").summernote('code', "asd");
+    $("#inputLongDesc").summernote('code', "asd");
 
     /* $(".page-section").hide();
     pageloader.fadeOut(500,function(){
@@ -23,6 +23,17 @@ $(document).ready(function() {
     		$("#page-new-post").show();/
     	}
     }); */
+	$('.summernote').summernote({
+	  	toolbar: [
+		    // [groupName, [list of button]]
+		    ['fontsize', ['fontname','fontsize','style']],
+		    ['style', ['bold', 'italic', 'underline','superscript', 'subscript', 'clear']],
+		    //['color', ['color']],
+		    ['para', ['ul', 'ol', 'paragraph']]
+		    //['height', ['height']]
+		],
+		height: 200
+	});
 
     $(".nav-link").click(function(e) {
         goTo($(this).data("link"));
@@ -33,8 +44,8 @@ $(document).ready(function() {
     $('#edit-post-form').submit(function() {
         var form = $(this);
 
-        form.find("button").data("html", form.find("button").html());
-        form.find("button").html('<i class="fa fa-gear fa-spin"></i>');
+        form.find(".box-footer button").data("html", form.find("button").html());
+        form.find(".box-footer button").html('<i class="fa fa-gear fa-spin"></i>');
 
         Parse.Cloud.run('editPost', {
             id: form.data("object").id,
@@ -50,11 +61,11 @@ $(document).ready(function() {
         }, {
             success: function(results) {
                 alert("Data updated!");
-                form.find("button").html(form.find("button").data("html"));
+                form.find(".box-footer button").html(form.find("button").data("html"));
             },
             error: function(error) {
                 alert("editPost failed: " + error.message);
-                form.find("button").html(form.find("button").data("html"));
+                form.find(".box-footer button").html(form.find("button").data("html"));
             }
         });
 
@@ -366,8 +377,8 @@ function populateEditForm(post){
     form.find("input[name='inputName']").val(obj.name);
     form.find("input[name='inputPhone']").val(obj.phone);
     form.find("input[name='inputEmail']").val(obj.email);
-    form.find("textarea[name='inputShortDesc']").val(obj.shortDesc);
-    form.find("textarea[name='inputLongDesc']").val(obj.longDesc);
+    form.find("textarea[name='inputShortDesc']").summernote('code', obj.shortDesc);
+    form.find("textarea[name='inputLongDesc']").summernote('code', obj.longDesc);
 
     $("#currCoverImg").attr("src", obj.coverImg.url);
 

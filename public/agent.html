@@ -28,6 +28,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
 	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/summernote.css" rel="stylesheet">
 
 	<script>
 
@@ -203,7 +204,7 @@
 			color: #fff;
 		}
 		body, .page-section{
-			background-color: #eee;
+			background-color: #f5f5f5;
 		}
 		.jumbotron {
 			background-color: #dcdcdc;
@@ -221,21 +222,22 @@
 			color:white;
 			-webkit-transform: translate(0px,-4px);
 			transform: translate(0px,-4px);
+			background: #009688;
 		}
 		#new-post:hover{
-			background: #03A9F4;
 		}
 		#my-account:hover{
-			background: #9C27B0;
 		}
 		#my-property:hover{
-			background: #FF9800;
 		}
 
 		/* Property listing */
 		.post-card {
 			margin: 15px 0px;
 			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+		.post-card .btn{
+			transition: background 300ms;
 		}
 		.post-card .status-hint{
 			transition: all 300ms;
@@ -278,11 +280,26 @@
 			background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
 	    	width: 100%;
 		}
+
+		.post-card .btn-floating{
+			box-shadow: 0px 1px 4px #ccc;
+			position: absolute;
+		    border-radius: 50%;
+		    margin: 10px;
+		    top: 0px;
+		    width: 36px;
+		    height: 36px;
+		    line-height: 24px;
+		    text-align: center;
+		    font-weight: 900;
+		    font-size: 14px;
+		}
+
 		.post-card .detail-section{
 			padding:20px;
 		}
 		.post-card .detail-section .detail-row{
-			height:1.3em;
+			height:1.5em;
 			overflow:hidden;
 		}
 		.post-card .detail-section .detail-row .fa{
@@ -454,11 +471,11 @@
 						</div>
 						<div class="form-group">
 						  <label for="inputShortDesc">SHORT DESCRIPTION</label>
-						  <textarea class="form-control" id="inputShortDesc" required></textarea>
+						  <textarea class="form-control summernote" id="inputShortDesc" required></textarea>
 						</div>
 						<div class="form-group">
 						  <label for="inputLongDesc">LONG DESCRIPTION</label>
-						  <textarea class="form-control" id="inputLongDesc" rows='10' required></textarea>
+						  <textarea class="form-control summernote" id="inputLongDesc" rows='10' required></textarea>
 						</div>
 						<div class="adminOnly hidden">
 							<div class="checkbox">
@@ -542,11 +559,11 @@
 						</div>
 						<div class="form-group">
 						  <label for="inputShortDesc">SHORT DESCRIPTION</label>
-						  <textarea class="form-control" name="inputShortDesc" required></textarea>
+						  <textarea class="form-control summernote" name="inputShortDesc" required></textarea>
 						</div>
 						<div class="form-group">
 						  <label for="inputLongDesc">LONG DESCRIPTION</label>
-						  <textarea class="form-control" name="inputLongDesc" rows='10' required></textarea>
+						  <textarea class="form-control summernote" name="inputLongDesc" rows='10' required></textarea>
 						</div>
 						<div class="adminOnly hidden">
 							<div class="checkbox">
@@ -668,13 +685,15 @@
 					<div class='psubject'></div>
 					<img class='pcoverImg'/>
 					<div class='clearfix'></div>
+					<a class='btn btn-default btn-sm pspecial1 btn-toggle-able btn-floating' style="right:46px">M</a>
+					<a class='btn btn-default btn-sm pfeatured btn-toggle-able btn-floating' style="right:0px">F</a>
 				</div>
 				<div class='detail-section'>
-					<div class=''>
+					<!--div class=''>
 						<a class='btn btn-default btn-sm pfeatured btn-toggle-able'>Featured</a>
 						<a class='btn btn-default btn-sm pspecial1 btn-toggle-able'>PotM</a>
 					</div>
-					<br/>
+					<br/-->
 					<div class='detail-row'><i class="fa fa-map-marker"></i> <span class='plocation'></span></div>
 					<div class='detail-row'><i class="fa fa-calendar"></i> <span class='pcreatedAt'></span></div>
 					<div class='detail-row'><i class="fa fa-user"></i> <span class='pname'></span></div>
@@ -739,6 +758,7 @@
 		}
 
 	</script>
+	<script type="text/javascript" src="js/summernote.min.js"></script>
 </body>
 
 </html>
