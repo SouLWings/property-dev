@@ -203,7 +203,7 @@
 			color: #fff;
 		}
 		body, .page-section{
-			background-color: #eee;
+			background-color: #f5f5f5;
 		}
 		.jumbotron {
 			background-color: #dcdcdc;
@@ -223,19 +223,22 @@
 			transform: translate(0px,-4px);
 		}
 		#new-post:hover{
-			background: #03A9F4;
+			background: #999;
 		}
 		#my-account:hover{
-			background: #9C27B0;
+			background: #999;
 		}
 		#my-property:hover{
-			background: #FF9800;
+			background: #999;
 		}
 
 		/* Property listing */
 		.post-card {
 			margin: 15px 0px;
 			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+		.post-card .btn{
+			transition: background 300ms;
 		}
 		.post-card .status-hint{
 			transition: all 300ms;
@@ -278,6 +281,19 @@
 			background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
 	    	width: 100%;
 		}
+
+		.post-card .btn-floating{
+			position: absolute;
+		    border-radius: 50%;
+		    margin: 10px;
+		    top: 0px;
+		    width: 36px;
+		    height: 36px;
+		    line-height: 24px;
+		    text-align: center;
+		    font-weight: 900;
+		}
+
 		.post-card .detail-section{
 			padding:20px;
 		}
@@ -668,13 +684,15 @@
 					<div class='psubject'></div>
 					<img class='pcoverImg'/>
 					<div class='clearfix'></div>
+					<a class='btn btn-default btn-sm pspecial1 btn-toggle-able btn-floating' style="right:46px">M</a>
+					<a class='btn btn-default btn-sm pfeatured btn-toggle-able btn-floating' style="right:0px">F</a>
 				</div>
 				<div class='detail-section'>
 					<div class=''>
-						<a class='btn btn-default btn-sm pfeatured btn-toggle-able'>Featured</a>
+						<!--a class='btn btn-default btn-sm pfeatured btn-toggle-able'>Featured</a>
 						<a class='btn btn-default btn-sm pspecial1 btn-toggle-able'>PotM</a>
 					</div>
-					<br/>
+					<br/-->
 					<div class='detail-row'><i class="fa fa-map-marker"></i> <span class='plocation'></span></div>
 					<div class='detail-row'><i class="fa fa-calendar"></i> <span class='pcreatedAt'></span></div>
 					<div class='detail-row'><i class="fa fa-user"></i> <span class='pname'></span></div>
