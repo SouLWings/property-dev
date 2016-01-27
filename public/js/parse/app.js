@@ -193,7 +193,7 @@ function initPropertyPage(){
 function initListingPage(){
 	var q = getUrlParams("q");
 	if(q!=''){
-		$("#inputKeyword").val(q);
+		$("#inputKeyword").val(q.replace(/%20/g,' '));
 	}
 
 	$("#inputKeyword, .filter").change(function(){
@@ -255,6 +255,13 @@ function initListingPage(){
 		$("#inputKeyword").trigger("change");
 	});
 
+	var latestPropertyQuery = getQuery("Post");
+	latestPropertyQuery.equalTo("status", "Approved");
+	latestPropertyQuery.limit(3);
+	loadDataToTemplate(latestPropertyQuery, '#latest-property-card-holder', ".h-property-card-template");
+}
+
+function initAboutPage(){
 	var latestPropertyQuery = getQuery("Post");
 	latestPropertyQuery.equalTo("status", "Approved");
 	latestPropertyQuery.limit(3);

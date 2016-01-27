@@ -11,8 +11,8 @@ $(document).ready(function() {
     $("#inputName").val("asd");
     $("#inputPhone").val("asd");
     $("#inputEmail").val("asd");
-    $("#inputShortDesc").summernote('code', "asd");
-    $("#inputLongDesc").summernote('code', "asd");
+	$("#inputShortDesc").summernote('code', "asd");
+	$("#inputLongDesc").summernote('code', "asd");
 
     /* $(".page-section").hide();
     pageloader.fadeOut(500,function(){
@@ -44,7 +44,7 @@ $(document).ready(function() {
     $('#edit-post-form').submit(function() {
         var form = $(this);
 
-        form.find(".box-footer button").data("html", form.find("button").html());
+		form.find(".box-footer button").data("html", form.find("button").html());
         form.find(".box-footer button").html('<i class="fa fa-gear fa-spin"></i>');
 
         Parse.Cloud.run('editPost', {
@@ -451,6 +451,16 @@ function generatePostCard(templateName, object) {
         }
 
     });
+
+	if(!Parse.User.current().get("isAdmin")){
+		if(object.user.objectId != Parse.User.current().id)
+			template.find(".btn").css("visibility",  "hidden");
+		else{
+			template.find(prefix + "status").hide();
+			template.find(prefix + "featured").hide();
+			template.find(prefix + "special1").hide();
+		}
+	}
 
     return template;
 }
