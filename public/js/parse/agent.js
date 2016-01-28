@@ -435,6 +435,8 @@ function generatePostCard(templateName, object) {
     $.each(object, function(key, val) {
         if (val.url !== undefined) {
             template.find(prefix + key).attr("src", val.url);
+        } else if (key == "subject") {
+            template.find(prefix + key).html(val+"</br><span class='pprice label-success'>RM 1,000,000</span>");
         } else if (key == "createdAt") {
             var date = new Date(val);
             template.find(prefix + key).text(date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
