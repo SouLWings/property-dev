@@ -70,20 +70,6 @@ img.cover-fit-width{
 	width:100%;
 }
 
-.pcoverImgbg .slider-arrow:hover{
-	background:rgba(0,0,0,0.6);
-
-}
-.pcoverImgbg .slider-arrow{
-	font-size:2em;
-	cursor:pointer;
-	top:205px;
-	padding:20px 15px;
-	background:rgba(0,0,0,0.4);
-	transition: all 400ms;
-	color:white;
-	position:absolute;
-}
 
 
 .template img{

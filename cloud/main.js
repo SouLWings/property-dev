@@ -102,6 +102,7 @@ Parse.Cloud.define("editPost", function(request, response) {
 		response.error("Authentication failed");
 	}
 
+	Parse.Cloud.useMasterKey();
 	var query = new Parse.Query(Post);
 	query.get(request.params.id, {
 		success: function(job) {
@@ -137,6 +138,7 @@ Parse.Cloud.define("editCover", function(request, response) {
 		response.error("Authentication failed");
 	}
 
+	Parse.Cloud.useMasterKey();
 	var query = new Parse.Query(Post);
 	query.get(request.params.id, {
 		success: function(job) {
@@ -164,6 +166,7 @@ Parse.Cloud.define("addOtherImg", function(request, response) {
 		response.error("Authentication failed");
 	}
 
+	Parse.Cloud.useMasterKey();
 	var query = new Parse.Query(Post);
 	query.get(request.params.id, {
 		success: function(job) {
@@ -191,7 +194,7 @@ Parse.Cloud.define("removePostImg", function(request, response) {
 	if (request.user == null) {
 		response.error("Authentication failed");
 	}
-
+	Parse.Cloud.useMasterKey();
 	var query = new Parse.Query(Post);
 	query.get(request.params.id, {
 		success: function(job) {
@@ -307,6 +310,10 @@ Parse.Cloud.define("setPostSpecial1", function(request, response) {
 });
 
 Parse.Cloud.define("setPostStatus", function(request, response) {
+	if (request.user == null) {
+		response.error("Authentication failed");
+	}
+	Parse.Cloud.useMasterKey();
 	var query = new Parse.Query(Post);
 	query.get(request.params.id, {
 		success: function(job) {
