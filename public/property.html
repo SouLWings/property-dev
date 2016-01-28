@@ -15,7 +15,6 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
 	<link rel="stylesheet" href="css/construction.css" type="text/css" />   <!-- YT -->
@@ -23,6 +22,7 @@
 	<link rel="stylesheet" href="css/dark.css" type="text/css" />   <!-- YT -->
     <link href="css/clean-blog.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -68,11 +68,11 @@
                     <li>
                         <a href="about.html">About</a>
                     </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
+					<li>
+                        <a href="careers.html">Careers</a>
                     </li>
-                    <li>
-                        <a href="login.html">For Agent</a>
+					<li>
+                        <a href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -105,15 +105,15 @@
 				<div class="row">
 					<div class="col-md-9">
 						<h2 class="psubject"></h2>
-						Posting Date:
+						<strong>Posting Date:</strong><br>
 						<div class="text-muted pcreatedAt"></div>
-						Building Type:
+						<strong>Property Type:</strong><br>
 						<div class="ptype"></div>
-						Sale/Rent:
+						<strong>Sale/Rent:</strong><br>
 						<div class="psaleRent"></div>
-						Location:
+						<strong>Location:</strong><br>
 						<div class="plocation"></div>
-						Short desc:
+						<strong>Short desc:</strong><br>
 						<div class="pshortDesc"></div>
 						<div id="imgSlider2"></div>
 						<!-- <div id="imgSlider" class="pcoverImgbg" style="height:470px;position:relative;background-image: url('img/buy6.jpg');background-size:cover;background-position:center center;">
@@ -207,7 +207,7 @@
 						<br/>
 					</div>
 					<div class="col-md-3">
-						<h3>Agent detail</h3>
+						<h3>Negotiator Details</h3>
 						<div class='well'>
 							<i class="fa fa-user"></i>
 							<span class="pname"></span>
@@ -265,7 +265,7 @@
 								<div class="form-group">
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
-								<span id="contactNegotiator-success" class="label label-success" style="display:none">Successfully submitted</span>
+								<span id="contactNegotiator-success" class="btn label-success" style="display:none">Thank you! Our negotiator will get in touch with you shortly.</span>
 								<br/>
 						  	</div>
 						</form>
@@ -277,7 +277,7 @@
 
 	<br>
 
-	<!-- Footer
+		<!-- Footer
 	============================================= -->
 	<footer id="footer" class="dark">
 
@@ -302,10 +302,10 @@
 							<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">
 								<ul>
 									<li><a href="#">Home</a></li>
-									<li><a href="listing.html">For Sale</a></li>
+									<li><a href="listing.html">Properties</a></li>
 									<li><a href="about.html">About US</a></li>
 									<li><a href="contact.html">Contact Us</a></li>
-									<li><a href="#">Career</a></li>
+									<li><a href="careers.html">Careers</a></li>
 								</ul>
 							</div>
 
@@ -352,8 +352,9 @@
 
 							<div class="col-md-12 bottommargin-sm" style="margin-bottom:30px">
 								<div class="footer-big-contacts">
-									<span>Call Us:</span>
-									(03) 123 4567
+									<span>Contact Us:</span>
+									<i class="fa fa-phone"></i> 603-7981 9288<br />
+									<i class="fa fa-fax"></i> 603-7980 9322<br />
 								</div>
 							</div>
 
@@ -371,22 +372,22 @@
 					<div class="widget subscribe-widget clearfix">
 						<div class="row">
 
-							<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
-								<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin"><!-- style="margin-right: 20px;background:#3B5998 !important;" -->
-									<i class="icon-facebook" ></i>  <!--style='width:10px;height:10px'> -->
-								</a>
+							<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px" >
+								<a href="https://www.facebook.com/MyLand-Properties-469927839699493/">
+								<span class="fa-stack fa-lg">
+								<i class="fa fa-square-o fa-stack-2x"></i>
+								<i class="fa fa-facebook fa-stack-1x"></i>
+								</span> </a>
 								<a href="https://www.facebook.com/MyLand-Properties-469927839699493/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
 							</div>
 							<div class="col-md-6 clearfix">
-								<div class="col-md-6 clearfix bottommargin-sm" style="margin-bottom:30px">
-								<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" > <!--style="margin-right: 10px;background:#3B5998 !important;"> -->
-
-									<i class="icon-rss"></i>
-								</a>
-								<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS</small></a>
-								</div>
+								<a href="#">
+								<span class="fa-stack fa-lg">
+								<i class="fa fa-square-o fa-stack-2x"></i>
+								<i class="fa fa-twitter fa-stack-1x"></i>
+								</span></a>
+								<a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
 							</div>
-
 						</div>
 					</div>
 
@@ -409,11 +410,13 @@
 
 				<div class="col-sm-6 col-xs-12">
 					<div class="pull-right copyright-links clearfix">
-						<a href="#">Home</a>/<a href="#">Available Properties</a>/<a href="#">About Us</a>/<a href="#">Contact Us</a>/<a href="#">Career</a>/<a href="#">For Agents</a>
+						<a href="#">Home</a>/<a href="listing.html">Properties</a>/<a href="about.html">About Us</a>/<a href="contact.html">Contact Us</a>/<a href="careers.html">Careers</a>/<a href="login.html">For Agents</a>
 					</div>
 				</div>
 
 			</div>
+
+			<a href="#" class="scrollup"><i class="fa fa-arrow-circle-up fa-2x"></i></a> <!--Scroll Up Button -->
 
 		</div><!-- #copyrights end -->
 
@@ -478,12 +481,12 @@
 	<script type="text/javascript" src="js/parse/parse-core.js"></script>
 	<script type="text/javascript" src="js/parse/app.js"></script>
 	<script>
-		initPropertyPage();
+		initHomepage();
 	</script>
 
 	<div class="template-holder hidden">
 
-		<div class='col-md-4 v-property-card v-property-card-template' data-prefix='p'>
+		<div class='col-md-4 v-property-card v-property-card-template template' data-prefix='p'>
 			<img class="pcoverImg" src='img/prop1.jpg' />
 			<div style=''>
 				<div class='psubject'>Chemara Hills - Castilla</div>
@@ -503,6 +506,29 @@
 			</div>
 		</div>
 	</div>
+
+		<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > 100) {
+					$('.scrollup').fadeIn();
+				} else {
+					$('.scrollup').fadeOut();
+				}
+			});
+			$('.scrollup').click(function () {
+				$("html, body").animate({
+					scrollTop: 0
+				}, 600);
+					return false;
+			});
+		});
+	</script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 </body>
 
 </html>
