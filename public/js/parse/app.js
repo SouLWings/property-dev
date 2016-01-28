@@ -22,6 +22,35 @@ $(document).ready(function(){
 		return false;
 	});
 
+	$('#contact-form').submit(function(){
+		var form = $(this);
+
+		form.find(".box-footer button").data("html", form.find("button").html());
+        form.find(".box-footer button").html('<i class="fa fa-gear fa-spin"></i>');
+
+		Parse.Cloud.run('addContactUs',{
+			fname: $(this).find("#fname").val(),
+			lname: $(this).find("#lname").val(),
+			email: $(this).find("#email").val(),
+			phone: $(this).find("#phone").val(),
+			msg: $(this).find("#message").val()
+		}, {
+			success: function(results) {
+				$("#subscribe-success").show();
+				//console.log("subscription success")/
+				form.find("input, textarea").val("");
+                form.find(".box-footer button").html('<i class="fa fa-check"></i>');
+			},
+			error: function(error) {
+				//console.log("subscription fail")
+				alert("Fail to submit. Please check your internet connection.");
+                form.find(".box-footer button").html(form.find("button").data("html"));
+			}
+		});
+
+		return false;
+	});
+
 	$('#contact-negotiator-form').submit(function(){
 		var form = $(this);
 		Parse.Cloud.run('contactNegotiator',{
@@ -128,11 +157,11 @@ function initHomepage(){
 		location="listing.html?q=" + $("#input-search").val();
 	});
 
-	$(".keywords").click(function(e){
+	/*$(".keywords").click(function(e){
 		$("#input-search").val($(this).text());
 		e.preventDefault();
 		return false;
-	});
+	});*/
 }
 
 function initPropertyPage(){

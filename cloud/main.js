@@ -41,6 +41,25 @@ Parse.Cloud.define("addSubscription", function(request, response) {
 
 });
 
+Parse.Cloud.define("addContactUs", function(request, response) {
+	Mailgun.sendEmail({
+		to: adminMail,
+		from: "mailbot@mylandprop.com",
+		subject: "New contact us request",
+		html: "Name: "+request.params.fname + " " + request.params.lname +"<br/>Phone: "+request.params.phone+"<br/>Email: "+request.params.email+"<br/>Message: "+request.params.msg
+	}, {
+		success: function(httpResponse) {
+			console.log("MailGun status: "+httpResponse.data.message);
+			response.success("success");
+		},
+		error: function(httpResponse) {
+			console.log("MailGun status: "+httpResponse.data.message);
+			response.error(httpResponse.data.message);
+		}
+	});
+
+});
+
 Parse.Cloud.define("contactNegotiator", function(request, response) {
 	Mailgun.sendEmail({
 		to: request.params.agentEmail,
