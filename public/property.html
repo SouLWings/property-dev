@@ -83,12 +83,12 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/rs1.jpg')">
+    <header class="intro-header pcoverImgbg" style="/*background-image: url('img/buy6.jpg');*/">
         <div class="container">
             <div class="row">
                 <div class=" col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h2 class='cover-text'>Your Best Real Estate Consultant</h2>
+                        <h2 class='cover-text psubject'></h2>
                         <!--hr class="small">
                         <span class="subheading"></span-->
                     </div>
@@ -105,15 +105,15 @@
 				<div class="row">
 					<div class="col-md-9">
 						<h2 class="psubject"></h2>
-						Posting Date:
+						<strong>Posting Date:</strong><br>
 						<div class="text-muted pcreatedAt"></div>
-						Building Type:
+						<strong>Property Type:</strong><br>
 						<div class="ptype"></div>
-						Sale/Rent:
+						<strong>Sale/Rent:</strong><br>
 						<div class="psaleRent"></div>
-						Location:
+						<strong>Location:</strong><br>
 						<div class="plocation"></div>
-						Short desc:
+						<strong>Short desc:</strong><br>
 						<div class="pshortDesc"></div>
 						<div id="imgSlider2"></div>
 						<!-- <div id="imgSlider" class="pcoverImgbg" style="height:470px;position:relative;background-image: url('img/buy6.jpg');background-size:cover;background-position:center center;">
@@ -144,11 +144,13 @@
 								right:0;
 							}
 							.pcoverImgbg{
-								height:180px;
+								height:210px;
 								position:relative;
 								background-size:cover;
 								background-position:center center;
 								transition: background-image 0.5s ease-in-out;
+								/*background-size: auto 100%;
+								background-repeat: no-repeat;*/
 							}
 							.imgContainer{
 								position:relative;
@@ -166,6 +168,21 @@
 								//margin-right: -4px;
 							}
 
+							.pcoverImgbg .slider-arrow:hover{
+								background:rgba(0,0,0,0.6);
+
+							}
+							.pcoverImgbg .slider-arrow{
+								font-size:1.5em;
+								top:70px;
+								cursor:pointer;
+								padding:20px 15px;
+								background:rgba(0,0,0,0.4);
+								transition: all 400ms;
+								color:white;
+								position:absolute;
+							}
+
 							.imgSelector{
 								display:none;
 								margin: 20px 0;
@@ -177,6 +194,11 @@
 								.pcoverImgbg{
 									height:470px;
 								}
+
+								.pcoverImgbg .slider-arrow{
+									top:205px;
+									font-size:2em;
+								}
 							}
 						</style>
 						<br/>
@@ -185,7 +207,7 @@
 						<br/>
 					</div>
 					<div class="col-md-3">
-						<h3>Agent detail</h3>
+						<h3>Negotiator Details</h3>
 						<div class='well'>
 							<i class="fa fa-user"></i>
 							<span class="pname"></span>
@@ -243,7 +265,7 @@
 								<div class="form-group">
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
-								<span id="contactNegotiator-success" class="label label-success" style="display:none">Successfully submitted</span>
+								<span id="contactNegotiator-success" class="btn label-success" style="display:none">Thank you! Our negotiator will get in touch with you shortly.</span>
 								<br/>
 						  	</div>
 						</form>
