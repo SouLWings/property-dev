@@ -3,12 +3,12 @@
 
 <head>
 
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Excel RealEstate">
+    <meta name="description" content="MyLand Properties">
     <meta name="author" content="Your Best Real Estate Consultant">
-	<meta property="og:site_name" content="Excel RealEstate">
+	<meta property="og:site_name" content="MyLand Properties">
 	<meta property="og:title" content="Your Best Real Estate Consultant">
 
     <title>MyLand Properties</title>
@@ -16,18 +16,21 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-	<link rel="stylesheet" href="css/construction.css" type="text/css" />   <!-- YT -->
-	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />   <!-- YT -->
-	<link rel="stylesheet" href="css/dark.css" type="text/css" />   <!-- YT -->
     <link href="css/clean-blog.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="css/form-elements.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
+	<script type="text/javascript" src="js/parse/parse-1.6.12.min.js"></script>
+	<script type="text/javascript" src="js/parse/parse-core.js"></script>
+	<script>
+		if(Parse.User.current() != null)
+			location = "agent.html";
+	</script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,7 +43,7 @@
 <body style="background: url(img/login-bg.jpg) no-repeat center center fixed;height:100%;background-size: cover;">
 
 	<div class="top-content" style="">
-        	
+
             <div class="inner-bg" >
                 <div class="container">
                     <div class="row">
@@ -80,7 +83,6 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3>...or login with:</h3>
                         	<h3>Not agent? </h3>
                         	<div class="social-login-buttons">
 	                        	<a class="btn btn-link-2" href="/">
@@ -91,7 +93,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
     <!-- jQuery -->

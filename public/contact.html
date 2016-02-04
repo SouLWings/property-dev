@@ -57,7 +57,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html"/">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="listing.html">Properties</a>
@@ -102,30 +102,30 @@
     <div class="row">
         <div class="col-md-6">
             <div class="well well-sm">
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" id="contact-form">
                     <fieldset>
                         <legend class="text-center header">Contact us</legend>
 						<br>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                                <input id="fname" name="firstname" type="text" placeholder="First Name" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                                <input id="lname" name="lastname" type="text" placeholder="Last Name" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control" required>
                             </div>
                         </div>
 
@@ -134,9 +134,9 @@
                                 <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="8"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group box-footer">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button> 
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                     </fieldset>
                 </form>
@@ -148,7 +148,7 @@
                     <div class="panel-body text-center">
                         <h4>Our Office</h4>
                         <div>
-                        <i class="fa fa-map-marker"></i> 16D, Jalan Desa Jaya<br /> 
+                        <i class="fa fa-map-marker"></i> 16D, Jalan Desa Jaya<br />
                         Tmn Desa Kuala Lumpur<br />
 						58100 Malaysia<br />
                         <i class="fa fa-phone"></i> 603-7981 9288<br />
@@ -164,9 +164,9 @@
 						<!-- Responsive iFrame -->
 						<div class="Flexible-container">
 							<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.971249066033!2d101.68114091475728!3d3.102296597740974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4a22b3677f61%3A0x414f04f88dcd0b50!2s16%2C+Jalan+Desa+Jaya%2C+Taman+Desa%2C+58100+Kuala+Lumpur%2C+Wilayah+Persekutuan+Kuala+Lumpur%2C+Malaysia!5e0!3m2!1sen!2s!4v1453955833327" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-							<iframe width="425" height="350" frameborder="0" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.971249066033!2d101.68114091475728!3d3.102296597740974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4a22b3677f61%3A0x414f04f88dcd0b50!2s16%2C+Jalan+Desa+Jaya%2C+Taman+Desa%2C+58100+Kuala+Lumpur%2C+Wilayah+Persekutuan+Kuala+Lumpur%2C+Malaysia!5e0!3m2!1sen!2s!4v1453955833327""></iframe>
+							<iframe width="425" height="350" frameborder="0" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.971249066033!2d101.68114091475728!3d3.102296597740974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4a22b3677f61%3A0x414f04f88dcd0b50!2s16%2C+Jalan+Desa+Jaya%2C+Taman+Desa%2C+58100+Kuala+Lumpur%2C+Wilayah+Persekutuan+Kuala+Lumpur%2C+Malaysia!5e0!3m2!1sen!2s!4v1453955833327"></iframe>
 						</div>
-						
+
 					</div>
                 </div>
             </div>
@@ -314,7 +314,7 @@
 				</div>
 
 			</div>
-			
+
 			<a href="#" class="scrollup"><i class="fa fa-arrow-circle-up fa-2x"></i></a> <!--Scroll Up Button -->
 
 		</div><!-- #copyrights end -->
@@ -380,7 +380,7 @@
 	<script type="text/javascript" src="js/parse/parse-core.js"></script>
 	<script type="text/javascript" src="js/parse/app.js"></script>
 	<script>
-		initHomepage();
+
 	</script>
 
 	<div class="template-holder hidden">
@@ -405,9 +405,7 @@
 			</div>
 		</div>
 	</div>
-	
-		<script
-		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
 	<script>
 		$(document).ready(function () {
 			$(window).scroll(function () {
@@ -427,7 +425,7 @@
 	</script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	
+
 </body>
 
 </html>
